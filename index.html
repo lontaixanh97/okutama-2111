@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Okutama 21.11 — một ngày ngắm lá đỏ</title>
+  <meta name="description" content="Kế hoạch đi Okutama một ngày ngắm lá đỏ, thứ Bảy 21/11/2026: lịch trình theo giờ, tàu xe, đồ cần mang, chi phí và lưu ý.">
+  <meta property="og:title" content="Okutama 21.11 — một ngày ngắm lá đỏ">
+  <meta property="og:description" content="Hẹn 08:00 ở ga Tachikawa, tàu 08:12, hồ Okutama, 9,4 km đường xưa Mukashi Michi, onsen rồi về.">
+  <meta property="og:image" content="assets/trailer-poster.jpg">
+  <meta name="theme-color" content="#0A2A2B">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-60 -60 120 120'%3E%3Ccircle r='58' fill='%23F6F8F3'/%3E%3Cpath fill='%23D7263D' d='M-1.2 6.9L-17.3 13.5L-13.6 3.3L-36.6-5.1L-12.3-6.7L-29.6-35.2L-4.8-13.2L0-50L4.8-13.2L29.6-35.2L12.3-6.7L36.6-5.1L13.6 3.3L17.3 13.5L1.2 6.9Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#lich-trinh">Bỏ qua, tới lịch trình</a>
+  <canvas id="leaves" aria-hidden="true"></canvas>
+
+  <!-- Thanh điều hướng dạng sơ đồ tuyến tàu -->
+  <nav class="line" aria-label="Các phần của trang">
+    <a class="line__home" href="#top" lang="ja" aria-label="Về đầu trang">奥多摩</a>
+    <ol class="line__stops">
+      <li><a href="#lich-trinh">Lịch trình</a></li>
+      <li><a href="#di-chuyen">Di chuyển</a></li>
+      <li><a href="#hanh-ly">Hành lý</a></li>
+      <li><a href="#la-do">Lá đỏ</a></li>
+      <li><a href="#chi-phi">Chi phí</a></li>
+      <li><a href="#luu-y">Lưu ý</a></li>
+    </ol>
+    <span class="line__train" aria-hidden="true"><i></i><i></i><i></i></span>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="hero__sun" aria-hidden="true"></div>
+    <div class="hero__mist hero__mist--a" aria-hidden="true"></div>
+    <div class="hero__mist hero__mist--b" aria-hidden="true"></div>
+    <svg class="hero__land" id="land" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+
+    <div class="hero__inner">
+      <h1 class="hero__title">
+        <span class="hero__kanji" lang="ja" aria-hidden="true"><span>奥</span><span>多</span><span>摩</span></span>
+        <span class="hero__line">Okutama, một ngày ngắm lá đỏ</span>
+      </h1>
+      <p class="hero__lead">Thứ Bảy 21/11/2026. Hẹn nhau 08:00 ở ga Tachikawa, lên tàu 08:12, ngắm hồ buổi sáng, đi bộ 9,4 km đường xưa Mukashi Michi xuôi về thị trấn, ngâm onsen rồi về lại Tachikawa lúc 17:54.</p>
+
+      <div class="countdown" id="countdown">
+        <p class="countdown__label" id="countdown-label">Còn lại đến chuyến tàu 08:12 ở Tachikawa</p>
+        <div class="countdown__board" role="timer" aria-live="off" aria-labelledby="countdown-label">
+          <div class="countdown__unit"><span class="flaps" data-unit="d">00</span><small>ngày</small></div>
+          <div class="countdown__unit"><span class="flaps" data-unit="h">00</span><small>giờ</small></div>
+          <div class="countdown__unit"><span class="flaps" data-unit="m">00</span><small>phút</small></div>
+          <div class="countdown__unit"><span class="flaps" data-unit="s">00</span><small>giây</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stamp" aria-hidden="true">
+      <span class="stamp__kanji" lang="ja">紅葉</span>
+      <span class="stamp__date">21.11</span>
+      <span class="stamp__day">Thứ Bảy</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ TRAILER ============ -->
+    <section class="carriage" id="trailer" aria-labelledby="trailer-title">
+      <div class="straps" aria-hidden="true">
+        <span class="strap"></span><span class="strap"></span><span class="strap"></span><span class="strap"></span><span class="strap"></span><span class="strap"></span><span class="strap"></span>
+      </div>
+      <div class="carriage__inner">
+        <div class="carriage__copy">
+          <h2 id="trailer-title">Cả ngày trong 20 giây</h2>
+          <p>Xem qua cửa sổ tàu: từ sân ga Tachikawa buổi sáng tới lúc mặt trời lặn sau núi. Chiếc đồng hồ góc dưới chạy theo đúng giờ của chuyến đi.</p>
+          <button class="btn" id="video-toggle" type="button" aria-pressed="false">Phát video</button>
+        </div>
+        <div class="window">
+          <video id="trailer-video" src="assets/trailer.mp4" poster="assets/trailer-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video hoạt hình tóm tắt chuyến đi Okutama: tuyến tàu, hồ, đường mòn, cầu treo và hoàng hôn"></video>
+          <span class="window__latch" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 1. LỊCH TRÌNH ============ -->
+    <section class="day" id="lich-trinh" aria-labelledby="h-lich-trinh">
+      <div class="day__stars" aria-hidden="true"></div>
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">行程</p>
+          <h2 id="h-lich-trinh">Lịch trình</h2>
+          <p class="sign__sub">Cuộn xuống và bầu trời sẽ trôi theo giờ trong ngày, từ lúc rời nhà 06:50 tới khi về tới nơi.</p>
+          <div class="sign__band"><a class="sign__prev" href="#trailer">Video</a><span lang="ja">奥多摩</span><a class="sign__next" href="#di-chuyen">Di chuyển</a></div>
+        </header>
+
+        <aside class="dial" aria-hidden="true">
+          <svg viewBox="0 0 200 116">
+            <path d="M18 100 A82 82 0 0 1 182 100" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+            <line x1="6" y1="100" x2="194" y2="100" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            <circle id="dial-sun" cx="18" cy="100" r="13"/>
+          </svg>
+          <p class="dial__time" id="dial-time">06:50</p>
+          <p class="dial__label" id="dial-label">Rời nhà</p>
+        </aside>
+
+        <div class="route" id="route">
+          <span class="route__track" aria-hidden="true"></span>
+          <span class="route__fill" id="route-fill" aria-hidden="true"></span>
+          <span class="route__marker" id="route-marker" data-mode="train" aria-hidden="true">
+            <svg class="i-train" viewBox="0 0 40 40"><rect x="9" y="4" width="22" height="27" rx="6" fill="#E9EEEA" stroke="#0B2526" stroke-width="3"/><rect x="10.5" y="19" width="19" height="5" fill="#F26B21"/><rect x="13" y="8" width="14" height="8" rx="2" fill="#0F3D3E"/><path d="M13 31l-4 6M27 31l4 6" stroke="#0B2526" stroke-width="3" stroke-linecap="round"/></svg>
+            <svg class="i-bus" viewBox="0 0 40 40"><rect x="6" y="7" width="28" height="23" rx="5" fill="#F4B41A" stroke="#0B2526" stroke-width="3"/><rect x="9.5" y="11" width="21" height="8" rx="2" fill="#0F3D3E"/><circle cx="13" cy="32" r="4" fill="#0B2526"/><circle cx="27" cy="32" r="4" fill="#0B2526"/></svg>
+            <svg class="i-walk" viewBox="0 0 40 40"><circle cx="21" cy="8" r="5" fill="#0B2526"/><path d="M21 14v11M21 25l-6 11M21 25l7 10M21 17l-8 5M21 17l8 3" stroke="#0B2526" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M31 14v22" stroke="#F26B21" stroke-width="3" stroke-linecap="round"/></svg>
+            <svg class="i-rest" viewBox="0 0 40 40"><path d="M7 22h26a13 13 0 0 1-26 0z" fill="#F6F8F3" stroke="#0B2526" stroke-width="3" stroke-linejoin="round"/><path d="M14 16c-3-4 3-5 0-9M20 16c-3-4 3-5 0-9M26 16c-3-4 3-5 0-9" stroke="#D7263D" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
+          </span>
+
+          <ol class="stops">
+            <li class="stop" data-min="410" data-mode="train" data-label="Rời nhà">
+              <time datetime="2026-11-21T06:50+09:00">06:50</time>
+              <article class="plate">
+                <h3>Rời ga Dokkyōdaigakumae</h3>
+                <p>Tuyến Tōbu Skytree, sân ga 2, tàu đi Kita-Koshigaya. Ba ga là tới Shin-Koshigaya lúc 06:55, rồi đi bộ vài phút sang ga JR Minami-Koshigaya ngay bên cạnh.</p>
+                <p class="plate__tip">Lỡ chuyến này thì chuyến 06:59 vẫn kịp, nhưng tới Tachikawa lúc 08:07, chỉ còn 5 phút đổi tàu.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="427" data-mode="train" data-label="Tuyến Musashino">
+              <time datetime="2026-11-21T07:07+09:00">07:07</time>
+              <article class="plate">
+                <h3>Tuyến Musashino từ Minami-Koshigaya</h3>
+                <p>Sân ga 1, tàu đi Fuchū-Hommachi. Ngồi 40 phút tới Nishi-Kokubunji lúc 07:47, sang sân ga 2 lên tuyến Chūō đi Takao lúc 07:51.</p>
+              </article>
+            </li>
+            <li class="stop stop--big" data-min="477" data-mode="rest" data-label="Tập trung">
+              <time datetime="2026-11-21T07:57+09:00">07:57</time>
+              <article class="plate">
+                <h3>Tới ga Tachikawa, điểm tập trung</h3>
+                <p>Hẹn cả nhóm lúc <strong>08:00 ở sân ga 5</strong>, nơi tàu đi Ōme và Okutama dừng. Còn 15 phút để mua onigiri, bento và nước ở cửa hàng trong ga, vì dọc đường mòn gần như không có hàng quán.</p>
+                <p class="plate__tip">Bạn nào ở trung tâm Tokyo thì lên luôn chuyến tàu này từ Tokyo 07:29 hoặc Shinjuku 07:44 rồi nhắn số toa vào nhóm, người chờ ở Tachikawa sẽ lên đúng toa đó.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="492" data-mode="train" data-label="Trên tàu">
+              <time datetime="2026-11-21T08:12+09:00">08:12</time>
+              <article class="plate">
+                <h3>Lên tàu Holiday Rapid Okutama số 3</h3>
+                <p>Tàu nhanh chỉ chạy thứ Bảy, Chủ nhật và ngày lễ, không tốn thêm phí. Mùa lá đỏ tàu thường đã kín ghế từ Shinjuku, nên chuẩn bị tinh thần đứng 30 phút tới Ōme.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="524" data-mode="train" data-label="Đổi tàu ở Ōme">
+              <time datetime="2026-11-21T08:44+09:00">08:44</time>
+              <article class="plate">
+                <h3>Đổi tàu ở Ōme, chỉ có 2 phút</h3>
+                <p>Tàu số 83 đi Okutama chờ sẵn và khởi hành lúc 08:46. Cứ đi theo dòng người đeo ba lô.</p>
+                <p class="plate__tip">Lỡ chuyến này thì chuyến thường kế tiếp rời Ōme 09:14, tới Okutama 09:59.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="556" data-mode="rest" data-label="Ga Okutama">
+              <time datetime="2026-11-21T09:16+09:00">09:16</time>
+              <article class="plate">
+                <h3>Tới ga Okutama</h3>
+                <p>Đi vệ sinh, lấy bản đồ giấy ở quầy thông tin du lịch cạnh ga rồi ra bến xe buýt số 2 ngay trước cửa.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="570" data-mode="bus" data-label="Trên xe buýt">
+              <time datetime="2026-11-21T09:30+09:00">09:30</time>
+              <article class="plate">
+                <h3>Xe buýt 奥09 ra hồ</h3>
+                <p>Xe đi Kamosawa-nishi, xuống trạm <span lang="ja">奥多摩湖</span> (Okutama-ko) sau khoảng 15 đến 20 phút. Quẹt Suica hoặc PASMO khi lên và xuống.</p>
+                <p class="plate__tip">Xe đầy thì đợi chuyến 10:05 (奥12), vẫn kịp lịch.</p>
+              </article>
+            </li>
+            <li class="stop stop--big" data-min="590" data-mode="walk" data-label="Hồ Okutama">
+              <time datetime="2026-11-21T09:50+09:00">09:50</time>
+              <article class="plate">
+                <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 62 40 30l34 26 40-38 46 40 34-22 26 22v48H0z" fill="#3F7577"/><path d="M0 74h220v36H0z" fill="#2E8C8A"/><path d="M96 58h60l14 30H82z" fill="#E9EEEA" stroke="#0B2526" stroke-width="3" stroke-linejoin="round"/><path d="M24 88h30M70 98h44M150 96h40" stroke="#F6F8F3" stroke-width="3" stroke-linecap="round" opacity=".7"/><circle cx="30" cy="52" r="10" fill="#D7263D"/><circle cx="46" cy="58" r="9" fill="#F4B41A"/><circle cx="188" cy="60" r="11" fill="#F26B21"/><circle cx="204" cy="66" r="9" fill="#D7263D"/></svg>
+                <h3>Hồ Okutama và đập Ogōchi</h3>
+                <p>Đi bộ trên thân đập, lên tháp ngắm cảnh, nhìn sườn núi đỏ vàng soi xuống mặt hồ màu ngọc. Nhà trưng bày Mizu to Midori no Fureaikan vào cửa miễn phí, có nhà vệ sinh sạch.</p>
+                <p class="plate__tip">Nắng sáng chiếu thẳng vào bờ đối diện, đây là lúc chụp hồ đẹp nhất trong ngày.</p>
+              </article>
+            </li>
+            <li class="stop stop--big" data-min="645" data-mode="walk" data-label="Đang đi bộ">
+              <time datetime="2026-11-21T10:45+09:00">10:45</time>
+              <article class="plate">
+                <h3>Vào đường mòn Mukashi Michi</h3>
+                <p>“Đường xưa” <span lang="ja">奥多摩むかし道</span> là con đường Ōme cũ, dài 9,4 km từ hồ về thị trấn. Đi chiều này chủ yếu xuôi dốc, khoảng 4 tiếng tính cả nghỉ.</p>
+                <p>Đoạn đầu là lối rừng nhìn xuống hồ, sau đó men theo khe sông Tama qua các xóm nhỏ, miếu đá và vườn hồng.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="735" data-mode="rest" data-label="Ăn trưa">
+              <time datetime="2026-11-21T12:15+09:00">12:15</time>
+              <article class="plate">
+                <h3>Ăn trưa giữa rừng</h3>
+                <p>Trải bento ở một điểm nghỉ có ghế dọc đường. Rót trà nóng từ bình giữ nhiệt, lúc này là ấm nhất trong ngày.</p>
+              </article>
+            </li>
+            <li class="stop stop--big" data-min="780" data-mode="walk" data-label="Cầu treo">
+              <time datetime="2026-11-21T13:00+09:00">13:00</time>
+              <article class="plate">
+                <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 110V64l40-18 26 22v42zM220 110V60l-44-16-24 24v42z" fill="#7A2130"/><circle cx="18" cy="60" r="13" fill="#D7263D"/><circle cx="40" cy="52" r="12" fill="#F26B21"/><circle cx="200" cy="54" r="13" fill="#F4B41A"/><circle cx="178" cy="50" r="11" fill="#D7263D"/><path d="M30 70 62 28Q110 78 158 28l32 42" fill="none" stroke="#0B2526" stroke-width="3"/><path d="M74 42v28M86 50v20M98 55v15M110 57v13M122 55v15M134 50v20M146 42v28" stroke="#0B2526" stroke-width="2"/><rect x="26" y="68" width="168" height="7" rx="2" fill="#F6F8F3" stroke="#0B2526" stroke-width="3"/><rect x="58" y="22" width="8" height="56" rx="2" fill="#D7263D" stroke="#0B2526" stroke-width="3"/><rect x="154" y="22" width="8" height="56" rx="2" fill="#D7263D" stroke="#0B2526" stroke-width="3"/></svg>
+                <h3>Cầu treo Shidakura và Dōdokoro</h3>
+                <p>Hai cây cầu treo bắc ngang khe sông Tama. Đứng giữa cầu là thấy cả vách núi đỏ rực hai bên và dòng nước xanh phía dưới.</p>
+                <p class="plate__tip">Mỗi lượt chỉ vài người được qua. Xem biển giới hạn ở đầu cầu và đừng nhún nhảy.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="885" data-mode="walk" data-label="Về thị trấn">
+              <time datetime="2026-11-21T14:45+09:00">14:45</time>
+              <article class="plate">
+                <h3>Về tới thị trấn Okutama</h3>
+                <p>Còn sức thì xuống hẻm Hikawa ngay sát ga: hai cầu treo nhỏ Hikawa-kobashi và Tōke-bashi, lá đỏ rủ sát mặt nước.</p>
+              </article>
+            </li>
+            <li class="stop stop--big" data-min="915" data-mode="rest" data-label="Thư giãn">
+              <time datetime="2026-11-21T15:15+09:00">15:15</time>
+              <article class="plate">
+                <h3>Ngâm onsen hoặc uống bia thủ công</h3>
+                <p><strong>Moegi no Yu</strong>: suối nước nóng cách ga 10 phút đi bộ, mở tới 20:00, khoảng 1.050 đến 1.200 yên cho 3 tiếng. Cuối tuần mùa lá đỏ có thể phải chờ vào.</p>
+                <p><strong>Beer Cafe VERTERE</strong>: bia thủ công nấu tại Okutama, ngay cạnh ga, hợp với nhóm không muốn xếp hàng tắm.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="991" data-mode="rest" data-label="Mặt trời lặn">
+              <time datetime="2026-11-21T16:31+09:00">16:31</time>
+              <article class="plate">
+                <h3>Mặt trời lặn</h3>
+                <p>Trong thung lũng trời tối và lạnh rất nhanh. Mặc thêm áo, đi dần ra ga.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="1018" data-mode="train" data-label="Tàu về">
+              <time datetime="2026-11-21T16:58+09:00">16:58</time>
+              <article class="plate">
+                <h3>Tàu Holiday Rapid Okutama số 86 về</h3>
+                <p>Tới Ōme 17:25, đổi sang số 6 khởi hành 17:27. Xếp hàng ở sân ga sớm 10 phút.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="1074" data-mode="train" data-label="Chia tay nhóm">
+              <time datetime="2026-11-21T17:54+09:00">17:54</time>
+              <article class="plate">
+                <h3>Về tới Tachikawa, chia tay nhóm</h3>
+                <p>Tàu dừng ở sân ga 3. Chuyến Musashino-gō đi Ōmiya khởi hành lúc 17:59 ngay tại sân ga này, khỏi phải leo cầu thang.</p>
+                <p class="plate__tip">Xuống Kita-Asaka lúc 18:24, đổi tuyến Musashino đi Tokyo lúc 18:28, tới Minami-Koshigaya 18:49.</p>
+              </article>
+            </li>
+            <li class="stop" data-min="1143" data-mode="rest" data-label="Về tới nhà">
+              <time datetime="2026-11-21T19:03+09:00">19:03</time>
+              <article class="plate">
+                <h3>Về tới ga Dokkyōdaigakumae</h3>
+                <p>Đi bộ sang Shin-Koshigaya, lên tàu Tōbu Skytree lúc 18:58. Hết một ngày, vừa kịp bữa tối.</p>
+              </article>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. DI CHUYỂN ============ -->
+    <section class="hall" id="di-chuyen" aria-labelledby="h-di-chuyen">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">交通</p>
+          <h2 id="h-di-chuyen">Cách di chuyển</h2>
+          <p class="sign__sub">Giờ tàu và xe buýt đã tra cho đúng thứ Bảy 21/11/2026. Một chiều từ ga Dokkyōdaigakumae tới Okutama hết 1.752 yên khi quẹt thẻ IC.</p>
+          <div class="sign__band"><a class="sign__prev" href="#lich-trinh">Lịch trình</a><span lang="ja">奥多摩</span><a class="sign__next" href="#hanh-ly">Hành lý</a></div>
+        </header>
+
+        <div class="boards">
+          <section class="board" aria-labelledby="b-di">
+            <h3 id="b-di"><span lang="ja">出発</span> Chiều đi</h3>
+            <ul>
+              <li class="dep dep--main">
+                <span class="flaps" data-board>06:50</span>
+                <div class="dep__body"><strong>Từ nhà: Tōbu Skytree, Musashino, Chūō</strong><span>Dokkyōdaigakumae sân ga 2. Minami-Koshigaya 07:07, Nishi-Kokubunji 07:51.</span></div>
+                <span class="dep__arr">tới Tachikawa <span class="flaps" data-board>07:57</span></span>
+                <em class="dep__tag">Chuyến của mình</em>
+              </li>
+              <li class="dep dep--main">
+                <span class="flaps" data-board>08:12</span>
+                <div class="dep__body"><strong>Holiday Rapid Okutama 3</strong><span>Tachikawa sân ga 5. Tới Ōme 08:44, đổi tàu số 83 lúc 08:46.</span></div>
+                <span class="dep__arr">tới Okutama <span class="flaps" data-board>09:16</span></span>
+                <em class="dep__tag">Cả nhóm</em>
+              </li>
+              <li class="dep">
+                <span class="flaps" data-board>08:39</span>
+                <div class="dep__body"><strong>Ōme Special Rapid từ Tachikawa</strong><span>Tới Ōme 09:12, đổi tàu thường lúc 09:14.</span></div>
+                <span class="dep__arr">tới Okutama <span class="flaps" data-board>09:59</span></span>
+                <em class="dep__tag">Dự phòng</em>
+              </li>
+            </ul>
+          </section>
+
+          <section class="board" aria-labelledby="b-ve">
+            <h3 id="b-ve"><span lang="ja">帰り</span> Chiều về</h3>
+            <ul>
+              <li class="dep dep--main">
+                <span class="flaps" data-board>16:58</span>
+                <div class="dep__body"><strong>Holiday Rapid Okutama 86</strong><span>Tới Ōme 17:25, đổi sang số 6 lúc 17:27.</span></div>
+                <span class="dep__arr">tới Tachikawa <span class="flaps" data-board>17:54</span></span>
+                <em class="dep__tag">Cả nhóm</em>
+              </li>
+              <li class="dep dep--main">
+                <span class="flaps" data-board>17:59</span>
+                <div class="dep__body"><strong>Về nhà: Musashino-gō, Musashino, Tōbu Skytree</strong><span>Tachikawa sân ga 3. Kita-Asaka 18:28, Minami-Koshigaya 18:49, Shin-Koshigaya 18:58.</span></div>
+                <span class="dep__arr">tới nhà <span class="flaps" data-board>19:03</span></span>
+                <em class="dep__tag">Chuyến của mình</em>
+              </li>
+              <li class="dep">
+                <span class="flaps" data-board>17:10</span>
+                <div class="dep__body"><strong>Tàu thường rời Okutama</strong><span>Ōme 17:49, Nishi-Kokubunji 18:33 lên tuyến Musashino, Shin-Koshigaya 19:26.</span></div>
+                <span class="dep__arr">tới nhà <span class="flaps" data-board>19:31</span></span>
+                <em class="dep__tag">Dự phòng</em>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="buses">
+          <div class="bus">
+            <h3>Xe buýt từ ga ra hồ</h3>
+            <p>Bến số 2 trước ga Okutama. Mọi tuyến 奥09, 奥10, 奥12 đều qua trạm <span lang="ja">奥多摩湖</span>.</p>
+            <p class="times"><b>09:30</b><span>10:05</span><span>10:35</span><span>11:30</span></p>
+          </div>
+          <div class="bus">
+            <h3>Xe buýt từ hồ về ga</h3>
+            <p>Dùng khi trời mưa hoặc nhóm muốn bỏ đoạn đi bộ. Mất khoảng 18 phút.</p>
+            <p class="times"><span>13:19</span><span>13:45</span><span>14:20</span><span>14:50</span><span>15:21</span><span>15:45</span><span>16:08</span><span>16:27</span></p>
+          </div>
+          <div class="bus">
+            <h3>Mẹo nhỏ</h3>
+            <ul class="tips">
+              <li>Nạp thẻ Suica hoặc PASMO từ tối hôm trước, tối thiểu 5.000 yên.</li>
+              <li>Holiday Rapid số 3 chạy từ Tokyo 07:29, qua Kanda, Ochanomizu, Shinjuku 07:44, Nakano, Mitaka, Kokubunji rồi mới tới Tachikawa.</li>
+              <li>Tàu Holiday Rapid chỉ dừng ở Mitake giữa Ōme và Okutama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. HÀNH LÝ ============ -->
+    <section class="pack" id="hanh-ly" aria-labelledby="h-hanh-ly">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">持ち物</p>
+          <h2 id="h-hanh-ly">Đồ cần chuẩn bị</h2>
+          <p class="sign__sub">Tích từng món để bỏ vào ba lô. Danh sách được lưu ngay trên máy bạn, mở lại vẫn còn.</p>
+          <div class="sign__band"><a class="sign__prev" href="#di-chuyen">Di chuyển</a><span lang="ja">奥多摩</span><a class="sign__next" href="#la-do">Lá đỏ</a></div>
+        </header>
+
+        <div class="pack__grid">
+          <div class="pack__lists" id="checklist">
+            <fieldset>
+              <legend>Không có là không đi được</legend>
+              <label class="item"><input type="checkbox" data-id="ic"><span class="item__text"><b>Thẻ Suica hoặc PASMO</b><small>Đã nạp ít nhất 5.000 yên cho tàu và xe buýt</small></span></label>
+              <label class="item"><input type="checkbox" data-id="cash"><span class="item__text"><b>Tiền mặt khoảng 5.000 yên</b><small>Onsen, quán nhỏ và máy bán nước thường chỉ nhận tiền mặt</small></span></label>
+              <label class="item"><input type="checkbox" data-id="shoes"><span class="item__text"><b>Giày đi bộ đế bám</b><small>Đường có đoạn đất, đá và lá ướt rất trơn</small></span></label>
+              <label class="item"><input type="checkbox" data-id="phone"><span class="item__text"><b>Điện thoại và pin dự phòng</b><small>Trời lạnh làm pin tụt nhanh hơn bình thường</small></span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Mặc theo lớp</legend>
+              <label class="item"><input type="checkbox" data-id="base"><span class="item__text"><b>Áo giữ nhiệt và áo nỉ mỏng</b><small>Sáng sớm ở hồ khoảng 3 đến 5 độ, trưa lên 12 đến 14 độ</small></span></label>
+              <label class="item"><input type="checkbox" data-id="shell"><span class="item__text"><b>Áo khoác chắn gió</b><small>Cởi ra khi đi bộ, mặc lại khi dừng nghỉ</small></span></label>
+              <label class="item"><input type="checkbox" data-id="hat"><span class="item__text"><b>Mũ len và găng tay mỏng</b><small>Sau 15:30 trong khe núi lạnh hẳn</small></span></label>
+              <label class="item"><input type="checkbox" data-id="rain"><span class="item__text"><b>Áo mưa gọn hoặc ô gấp</b><small>Thời tiết trên núi đổi nhanh</small></span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Ăn uống</legend>
+              <label class="item"><input type="checkbox" data-id="bento"><span class="item__text"><b>Bento hoặc onigiri cho bữa trưa</b><small>Mua từ tối hôm trước hoặc ở ga Tachikawa</small></span></label>
+              <label class="item"><input type="checkbox" data-id="water"><span class="item__text"><b>1 lít nước và bình trà nóng</b><small>Dọc đường mòn rất ít máy bán nước</small></span></label>
+              <label class="item"><input type="checkbox" data-id="snack"><span class="item__text"><b>Đồ ăn vặt nhiều năng lượng</b><small>Sô cô la, hạt, kẹo dẻo</small></span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Nên mang thêm</legend>
+              <label class="item"><input type="checkbox" data-id="bell"><span class="item__text"><b>Chuông báo gấu</b><small>Năm 2026 Okutama có nhiều tin gấu xuất hiện</small></span></label>
+              <label class="item"><input type="checkbox" data-id="light"><span class="item__text"><b>Đèn pin nhỏ</b><small>Phòng khi về trễ, 16:31 là mặt trời lặn</small></span></label>
+              <label class="item"><input type="checkbox" data-id="towel"><span class="item__text"><b>Khăn tắm nhỏ</b><small>Dùng ở onsen, đỡ phải thuê</small></span></label>
+              <label class="item"><input type="checkbox" data-id="trash"><span class="item__text"><b>Túi đựng rác</b><small>Trên đường không có thùng rác, rác mang về</small></span></label>
+              <label class="item"><input type="checkbox" data-id="aid"><span class="item__text"><b>Băng cá nhân và thuốc riêng</b><small>Thêm miếng dán chống phồng chân</small></span></label>
+              <label class="item"><input type="checkbox" data-id="map"><span class="item__text"><b>Bản đồ tải sẵn để xem ngoại tuyến</b><small>Trong khe núi sóng chập chờn</small></span></label>
+            </fieldset>
+          </div>
+
+          <aside class="pack__bag" aria-live="polite">
+            <svg id="bag" viewBox="0 0 200 250" aria-hidden="true">
+              <defs><clipPath id="bag-clip"><rect id="bag-level" x="0" y="250" width="200" height="250"/></clipPath></defs>
+              <path d="M70 40c0-36 60-36 60 0" fill="none" stroke="#0B2526" stroke-width="9" stroke-linecap="round"/>
+              <path id="bag-body" d="M38 70c0-22 20-34 62-34s62 12 62 34v130c0 22-12 34-34 34H72c-22 0-34-12-34-34z" fill="#F6F8F3" stroke="#0B2526" stroke-width="6"/>
+              <g clip-path="url(#bag-clip)"><path d="M38 70c0-22 20-34 62-34s62 12 62 34v130c0 22-12 34-34 34H72c-22 0-34-12-34-34z" fill="#D7263D"/><path d="M38 150h124v84H38z" fill="#B81D36" opacity=".55"/></g>
+              <path d="M38 70c0-22 20-34 62-34s62 12 62 34v130c0 22-12 34-34 34H72c-22 0-34-12-34-34z" fill="none" stroke="#0B2526" stroke-width="6"/>
+              <path d="M40 96c40 16 80 16 120 0" fill="none" stroke="#0B2526" stroke-width="6"/>
+              <rect x="88" y="92" width="24" height="30" rx="5" fill="#F4B41A" stroke="#0B2526" stroke-width="5"/>
+              <rect x="62" y="150" width="76" height="56" rx="10" fill="none" stroke="#0B2526" stroke-width="6"/>
+              <path d="M62 170h76" stroke="#0B2526" stroke-width="5"/>
+            </svg>
+            <p class="pack__count"><span id="bag-count">0</span>/<span id="bag-total">17</span> món</p>
+            <p class="pack__status" id="bag-status">Ba lô còn trống.</p>
+            <button class="btn btn--ghost" id="bag-reset" type="button">Bỏ hết ra xếp lại</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. LÁ ĐỎ ============ -->
+    <section class="koyo" id="la-do" aria-labelledby="h-la-do">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">紅葉</p>
+          <h2 id="h-la-do">Lá đỏ đang tới đâu</h2>
+          <p class="sign__sub">Theo Weathernews: ngày 13/11 hồ Okutama đã đổi màu khoảng 5 phần, dự báo vào đỉnh từ khoảng 17/11 và bắt đầu rụng từ khoảng 2/12. Ngày 21/11 rơi đúng giữa mùa đẹp nhất.</p>
+          <div class="sign__band"><a class="sign__prev" href="#hanh-ly">Hành lý</a><span lang="ja">奥多摩</span><a class="sign__next" href="#chi-phi">Chi phí</a></div>
+        </header>
+
+        <div class="koyo__grid">
+          <svg class="koyo__tree" id="tree" viewBox="0 0 420 340" role="img" aria-label="Cây phong đổi màu theo ngày đang chọn"></svg>
+          <div class="koyo__panel">
+            <p class="koyo__date" id="koyo-date">21/11</p>
+            <p class="koyo__status" id="koyo-status" aria-live="polite">Đỉnh điểm</p>
+            <label class="koyo__label" for="koyo-range">Kéo để xem cây đổi màu qua từng ngày</label>
+            <div class="koyo__slider">
+              <input id="koyo-range" type="range" min="0" max="39" value="20" step="1" aria-valuetext="21/11, đỉnh điểm">
+              <span class="koyo__flag" aria-hidden="true">Ngày mình đi</span>
+            </div>
+            <div class="koyo__scale" aria-hidden="true"><span>1/11</span><span>10/11</span><span>20/11</span><span>30/11</span><span>10/12</span></div>
+            <dl class="facts">
+              <div><dt>Mặt trời mọc</dt><dd>06:22</dd></div>
+              <div><dt>Mặt trời lặn</dt><dd>16:31</dd></div>
+              <div><dt>Nhiệt độ thường gặp</dt><dd>3 đến 14°C</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. CHI PHÍ + PHƯƠNG ÁN B ============ -->
+    <section class="money" id="chi-phi" aria-labelledby="h-chi-phi">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">費用</p>
+          <h2 id="h-chi-phi">Chi phí mỗi người</h2>
+          <p class="sign__sub">Tính từ ga Dokkyōdaigakumae. Bạn đi từ Shinjuku thì tàu khứ hồi là 2.442 yên. Không cần đặt trước bất cứ thứ gì.</p>
+          <div class="sign__band"><a class="sign__prev" href="#la-do">Lá đỏ</a><span lang="ja">奥多摩</span><a class="sign__next" href="#luu-y">Lưu ý</a></div>
+        </header>
+
+        <div class="money__grid">
+          <div class="ticket">
+            <p class="ticket__head"><span lang="ja">獨協大学前 ⇄ 奥多摩</span><span>21.11.2026</span></p>
+            <dl>
+              <div><dt>Tàu khứ hồi tới Okutama</dt><dd>3.504 ¥</dd></div>
+              <div><dt>Xe buýt ga ra hồ <small>ước tính</small></dt><dd>~400 ¥</dd></div>
+              <div><dt>Bento, nước, đồ ăn vặt</dt><dd>~1.500 ¥</dd></div>
+              <div><dt>Onsen Moegi no Yu <small>tùy chọn</small></dt><dd>~1.200 ¥</dd></div>
+              <div><dt>Bia thủ công hoặc cà phê <small>tùy chọn</small></dt><dd>~1.000 ¥</dd></div>
+            </dl>
+            <p class="ticket__total"><span>Tổng cộng khoảng</span><strong>5.400 đến 7.600 ¥</strong></p>
+          </div>
+
+          <div class="planb">
+            <h3>Phương án B cho ngày mưa hoặc muốn đi nhẹ</h3>
+            <p>Bỏ Mukashi Michi, đi tuyến hẻm núi ngắn khoảng 4 km, mất 1,5 đến 2 tiếng, gần như bằng phẳng.</p>
+            <ol class="planb__steps">
+              <li><b>Ga Hatonosu</b> <span lang="ja">鳩ノ巣</span>. Đi tàu thường từ Ōme vì Holiday Rapid không dừng ở đây.</li>
+              <li><b>Hẻm Hatonosu</b>, vách đá và cầu treo ngay dưới ga.</li>
+              <li><b>Đập Shiromaru</b>, mặt hồ nhỏ xanh ngọc và đường cho cá bơi ngược.</li>
+              <li><b>Hẻm Kazuma</b> rồi đi tiếp về ga Okutama.</li>
+              <li>Còn thời gian thì bắt xe buýt ra hồ, về bằng chuyến 14:50 hoặc 15:21.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. LƯU Ý ============ -->
+    <section class="care" id="luu-y" aria-labelledby="h-luu-y">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">注意</p>
+          <h2 id="h-luu-y">Lưu ý an toàn</h2>
+          <p class="sign__sub">Sáu điều nên đọc một lần trước khi đi.</p>
+          <div class="sign__band"><a class="sign__prev" href="#chi-phi">Chi phí</a><span lang="ja">奥多摩</span><a class="sign__next" href="#top">Đầu trang</a></div>
+        </header>
+
+        <ul class="cares">
+          <li><h3>Ra khỏi đường mòn trước 15:30</h3><p>Mặt trời lặn lúc 16:31 nhưng khe núi tối sớm hơn nhiều. Nếu 13:30 vẫn chưa tới cầu Shidakura, rẽ ra quốc lộ 411 và bắt xe buýt về ga.</p></li>
+          <li><h3>Gấu</h3><p>Năm nay Okutama từng đóng một số đường núi vì gấu. Mukashi Michi gần khu dân cư nên ít rủi ro hơn, nhưng vẫn nên đeo chuông, đi theo nhóm và không bỏ lại đồ ăn.</p></li>
+          <li><h3>Tình trạng đường mòn</h3><p>Trung tâm Okutama Visitor Center ghi nhận Mukashi Michi thông toàn tuyến trong bản cập nhật 6/11. Xem lại vào tối thứ Sáu.</p></li>
+          <li><h3>Cầu treo</h3><p>Tuân theo số người tối đa ghi ở đầu cầu. Cất điện thoại vào túi có khóa khi đứng giữa cầu.</p></li>
+          <li><h3>Sóng điện thoại</h3><p>Chập chờn ở nhiều đoạn. Hẹn trước điểm chờ nhau: mỗi cây cầu treo và mỗi nhà vệ sinh trên đường.</p></li>
+          <li><h3>Nếu dự báo mưa to</h3><p>Chuyển sang phương án B, hoặc dời sang Chủ nhật 22/11. Lá vẫn đang ở đỉnh tới cuối tháng.</p></li>
+        </ul>
+
+        <div class="checks">
+          <h3>Xem lại vào tối thứ Sáu 20/11</h3>
+          <ul>
+            <li><a href="https://weathernews.jp/koyo/spot/24402/" target="_blank" rel="noopener">Tình hình lá đỏ hồ Okutama (Weathernews)</a></li>
+            <li><a href="https://okutamavc.ces-net.jp/info/52" target="_blank" rel="noopener">Tình trạng đường mòn (Okutama Visitor Center)</a></li>
+            <li><a href="https://tenki.jp/kouyou/3/16/34654.html" target="_blank" rel="noopener">Thời tiết và lá đỏ (tenki.jp)</a></li>
+            <li><a href="https://timetables.jreast.co.jp/2611/timetable/tt0368/0368011.html" target="_blank" rel="noopener">Giờ tàu rời ga Okutama (JR East)</a></li>
+            <li><a href="https://www.nisitokyobus.co.jp/rosen/noriba/okutama.html" target="_blank" rel="noopener">Bến xe buýt ga Okutama (Nishi Tokyo Bus)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="foot__big" lang="ja" aria-hidden="true">いってらっしゃい</p>
+    <p>Hẹn 08:00 thứ Bảy 21/11, ga Tachikawa, sân ga 5.</p>
+    <p class="foot__small">Giờ tàu xe tra ngày 16/11/2026, có thể thay đổi. Hãy kiểm tra lại trước khi đi.</p>
+    <button class="btn btn--ghost" id="leaf-toggle" type="button" aria-pressed="true">Tắt lá rơi</button>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

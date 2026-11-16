@@ -1,0 +1,19 @@
+{
+  "name": "okutama-trailer",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Video motion (Remotion) cho trang Okutama 21/11",
+  "scripts": {
+    "studio": "remotion studio src/index.jsx",
+    "render": "remotion render src/index.jsx Trailer ../assets/trailer.mp4 --codec=h264 --crf=20 --pixel-format=yuv420p",
+    "poster": "remotion still src/index.jsx Trailer ../assets/trailer-poster.jpg --frame=100 --image-format=jpeg --jpeg-quality=85"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.0.0",
+    "@fontsource/dela-gothic-one": "^5.0.0",
+    "@remotion/cli": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  }
+}
