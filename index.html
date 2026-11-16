@@ -78,7 +78,10 @@
           <button class="btn" id="video-toggle" type="button" aria-pressed="false">Phát video</button>
         </div>
         <div class="window">
-          <video id="trailer-video" src="assets/trailer.mp4" poster="assets/trailer-poster.jpg" muted loop playsinline preload="metadata" aria-label="Video hoạt hình tóm tắt chuyến đi Okutama: tuyến tàu, hồ, đường mòn, cầu treo và hoàng hôn"></video>
+          <video id="trailer-video" poster="assets/trailer-poster.jpg" muted loop playsinline preload="none" aria-label="Video hoạt hình tóm tắt chuyến đi Okutama: tuyến tàu, hồ, đường mòn, cầu treo và hoàng hôn">
+            <source src="assets/trailer-480.mp4" media="(max-width: 759px)" type="video/mp4">
+            <source src="assets/trailer.mp4" type="video/mp4">
+          </video>
           <span class="window__latch" aria-hidden="true"></span>
         </div>
       </div>

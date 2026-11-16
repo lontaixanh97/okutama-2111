@@ -28,7 +28,7 @@ Trang chỉ dùng đường dẫn tương đối nên chạy được ở `https
 | `index.html` | Toàn bộ nội dung: lịch trình, tàu xe, hành lý, lá đỏ, chi phí, lưu ý |
 | `css/style.css` | Giao diện |
 | `js/main.js` | Hiệu ứng: lá rơi, núi nhiều lớp, bảng lật, bầu trời theo giờ, ba lô, cây đổi màu |
-| `assets/trailer.mp4` | Video 20 giây nhúng trong "cửa sổ tàu" |
+| `assets/trailer.mp4`, `assets/trailer-480.mp4` | Video 20 giây nhúng trong "cửa sổ tàu" (bản 720p và bản nhẹ cho điện thoại) |
 | `video/` | Mã nguồn video (Remotion) |
 
 ## Sửa và render lại video
@@ -37,7 +37,7 @@ Trang chỉ dùng đường dẫn tương đối nên chạy được ở `https
 cd video
 npm install
 npm run studio   # xem trước, chỉnh trong src/Trailer.jsx
-npm run render   # xuất ../assets/trailer.mp4
+npm run render   # xuất ../assets/trailer.mp4 và bản điện thoại trailer-480.mp4
 npm run poster   # xuất ảnh bìa ../assets/trailer-poster.jpg
 ```
 

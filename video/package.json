@@ -5,7 +5,8 @@
   "description": "Video motion (Remotion) cho trang Okutama 21/11",
   "scripts": {
     "studio": "remotion studio src/index.jsx",
-    "render": "remotion render src/index.jsx Trailer ../assets/trailer.mp4 --codec=h264 --crf=20 --pixel-format=yuv420p",
+    "render": "remotion render src/index.jsx Trailer ../assets/trailer.mp4 --codec=h264 --crf=25 --pixel-format=yuv420p && npm run mobile",
+    "mobile": "ffmpeg -y -i ../assets/trailer.mp4 -vf scale=854:480:flags=lanczos -c:v libx264 -preset slow -crf 27 -pix_fmt yuv420p -an -movflags +faststart ../assets/trailer-480.mp4",
     "poster": "remotion still src/index.jsx Trailer ../assets/trailer-poster.jpg --frame=100 --image-format=jpeg --jpeg-quality=85"
   },
   "dependencies": {

@@ -221,8 +221,9 @@
     };
   })();
 
-  addEventListener('pointerdown', (e) => {
-    if (e.target.closest('input, video')) return;
+  // 'click' chứ không phải 'pointerdown': trên điện thoại, vuốt để cuộn không được tính là chạm
+  addEventListener('click', (e) => {
+    if (e.target.closest('input, label, video')) return;
     leaves.burst(e.clientX, e.clientY, 7);
   });
   const leafBtn = $('#leaf-toggle');
