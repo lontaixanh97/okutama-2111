@@ -28,6 +28,9 @@ Trang chỉ dùng đường dẫn tương đối nên chạy được ở `https
 | `index.html` | Toàn bộ nội dung: lịch trình, tàu xe, hành lý, lá đỏ, chi phí, lưu ý |
 | `css/style.css` | Giao diện |
 | `js/main.js` | Hiệu ứng: lá rơi, núi nhiều lớp, bảng lật, bầu trời theo giờ, ba lô, cây đổi màu |
+| `js/trails.js` | Chọn phương án A/B, bản đồ cung đường, biểu đồ độ cao |
+| `js/routes.js` | Dữ liệu hai cung đường (tạo tự động, đừng sửa tay) |
+| `tools/` | Mã dựng `routes.js` từ OpenStreetMap và độ cao GSI |
 | `assets/trailer.mp4`, `assets/trailer-480.mp4` | Video 20 giây nhúng trong "cửa sổ tàu" (bản 720p và bản nhẹ cho điện thoại) |
 | `video/` | Mã nguồn video (Remotion) |
 
@@ -41,8 +44,18 @@ npm run render   # xuất ../assets/trailer.mp4 và bản điện thoại traile
 npm run poster   # xuất ảnh bìa ../assets/trailer-poster.jpg
 ```
 
+## Dựng lại dữ liệu cung đường
+
+`tools/build_routes.py` đọc mạng lưới đường đã tải từ OpenStreetMap (`net.json` đặt cạnh nó), tìm đường qua các điểm trong `tools/routes_def.json`, lấy độ cao từ GSI rồi ghi `js/routes.js`.
+
+```bash
+python3 tools/build_routes.py js/routes.js
+```
+
 ## Nguồn số liệu (tra ngày 16/11/2026)
 
+- Cung đường: © OpenStreetMap contributors (ODbL). Độ cao: Cơ quan Thông tin Địa không gian Nhật Bản (GSI)
+- Thân đập Shiromaru đóng 28/9/2026 tới cuối 2/2027: Okutama Visitor Center
 - Giờ tàu: Yahoo! 乗換案内 và bảng giờ JR East cho thứ Bảy 21/11/2026, tính từ ga 獨協大学前, tập trung ở ga Tachikawa
 - Giờ xe buýt: NAVITIME, Nishi Tokyo Bus
 - Lá đỏ: Weathernews (hồ Okutama)

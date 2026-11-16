@@ -555,3 +555,144 @@ img, svg, video { display: block; max-width: 100%; }
   .item:hover { background: none; }
   .ticket:hover { transform: rotate(-1.2deg); }
 }
+
+/* ==========================================================
+   Chọn cung đường: hai phương án
+   ========================================================== */
+html[data-plan="a"] [data-plan="b"],
+html[data-plan="b"] [data-plan="a"] { display: none !important; }
+
+.choose { background: var(--paper); padding: clamp(60px, 9vw, 120px) 0; }
+.sign__plan { padding: 0 26px 18px; font-weight: 600; }
+.sign__plan a { display: inline-block; padding: 10px 0; font-weight: 800; text-decoration-color: var(--rail); text-decoration-thickness: 3px; text-underline-offset: 4px; white-space: nowrap; }
+
+.plans { display: grid; gap: 22px; }
+.plan {
+  display: grid; gap: 8px; align-content: start; text-align: left; cursor: pointer;
+  font: inherit; color: var(--ink); background: #fff;
+  border: 4px solid var(--ink); border-radius: 14px; padding: 20px 22px 22px;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform .2s cubic-bezier(.3, 1.6, .5, 1), box-shadow .2s, background .2s;
+}
+.plan[aria-checked="true"] { background: #FFF1C2; transform: translate(-4px, -4px); box-shadow: 10px 10px 0 var(--ink); }
+.plan__tag { font-family: var(--display); font-size: .95rem; color: var(--momiji-deep); }
+.plan__name { font-family: var(--display); font-size: clamp(1.45rem, 3.2vw, 2rem); line-height: 1.15; }
+.plan__desc { max-width: 34em; }
+.plan__spark { width: 100%; height: 70px; margin-top: 6px; border-bottom: 3px solid var(--ink); }
+.spark__area { fill: #BFD9CF; }
+.plan[aria-checked="true"] .spark__area { fill: var(--icho); }
+.spark__line { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.plan__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 8px; font-size: .88rem; font-weight: 600; }
+.plan__stats b { display: block; font-family: var(--display); font-weight: 400; font-size: clamp(1.05rem, 2.2vw, 1.35rem); white-space: nowrap; }
+.plan__pick { justify-self: start; margin-top: 12px; font-weight: 800; padding: 9px 16px; border: 3px solid var(--ink); border-radius: 99px; background: var(--icho); }
+.plan[aria-checked="true"] .plan__pick { background: var(--ink); color: var(--paper); }
+.plans__note { margin-top: 14px; font-size: .9rem; color: #456362; }
+
+.trail { margin-top: clamp(40px, 6vw, 70px); }
+.trail h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.5rem, 3.6vw, 2.3rem); line-height: 1.2; }
+.trail__lead { max-width: 44em; margin: 12px 0 24px; }
+.trail h4 { font-family: var(--display); font-weight: 400; font-size: 1.2rem; margin-bottom: 12px; }
+
+/* ---------- bản đồ ---------- */
+.tmap { position: relative; background: #DCE8E1; border: 4px solid var(--ink); border-radius: 14px; box-shadow: 8px 8px 0 var(--ink); overflow: hidden; }
+.tmap__scroll { overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+.tmap__stage { position: relative; }
+.tmap__svg { width: 100%; height: auto; }
+.tmap__svg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.m-stream { stroke: #A8D5D0; stroke-width: 1.5; }
+.m-minorroad { stroke: #F6F8F3; stroke-width: 3; }
+.m-river { stroke: var(--water); stroke-width: 11; }
+.tmap__svg .m-water { fill: var(--water); stroke: var(--water); stroke-width: 3; }
+.m-flow { stroke: #A9E0DB; stroke-width: 2.5; stroke-dasharray: 3 30; animation: flow 2.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -33; } }
+.m-road { stroke: #8FA39B; stroke-width: 7; }
+.m-road-in { stroke: #F6F8F3; stroke-width: 3; }
+.m-rail { stroke: var(--ink); stroke-width: 5; }
+.tmap__svg .m-rail-in { stroke: var(--paper); stroke-width: 2.5; stroke-dasharray: 9 9; stroke-linecap: butt; }
+.m-trail-ghost { stroke: rgba(11, 37, 38, .3); stroke-width: 4; stroke-dasharray: 1 9; }
+.m-trail-case { stroke: var(--ink); stroke-width: 13; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.m-trail-line { stroke: var(--rail); stroke-width: 7; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.m-pin { cursor: pointer; outline: none; }
+.m-pin circle { fill: var(--paper); stroke: var(--ink); stroke-width: 4; transition: fill .25s; }
+.m-pin text { font: 400 15px var(--display); fill: var(--ink); pointer-events: none; }
+.m-pin.is-on circle { fill: var(--icho); }
+.m-pin.is-active circle, .m-pin:focus-visible circle { fill: var(--momiji); stroke-width: 6; }
+.m-pin.is-active text, .m-pin:focus-visible text { fill: var(--paper); }
+.m-hiker { pointer-events: none; }
+.m-hiker circle { fill: var(--paper); stroke: var(--ink); stroke-width: 4; }
+.tmap__svg .m-hiker-fig { stroke: var(--ink); stroke-width: 3; }
+.tmap__svg .m-scale-bar { stroke: var(--ink); stroke-width: 3; stroke-linecap: butt; }
+.m-scale-text { font: 700 15px var(--body); fill: var(--ink); }
+.tmap__svg .m-north path { fill: var(--ink); }
+.m-north text { font: 400 15px var(--display); fill: var(--ink); }
+.tmap__tip { position: absolute; z-index: 2; transform: translate(-50%, calc(-100% - 26px)); background: var(--ink); color: var(--paper); font-weight: 700; font-size: .9rem; padding: 6px 12px; border-radius: 8px; white-space: nowrap; pointer-events: none; }
+.tmap__tip.is-left { transform: translate(-88%, calc(-100% - 26px)); }
+.tmap__tip.is-right { transform: translate(-12%, calc(-100% - 26px)); }
+.tmap__hint { display: none; margin: 0; padding: 8px 14px; font-size: .85rem; font-weight: 600; background: var(--paper); border-top: 3px solid var(--ink); }
+.tmap__replay { position: absolute; right: 12px; bottom: 12px; font: 700 .85rem/1 var(--body); color: var(--ink); background: var(--paper); border: 3px solid var(--ink); border-radius: 99px; padding: 13px 16px; cursor: pointer; }
+.tmap__replay:hover { background: var(--icho); }
+
+/* ---------- biểu đồ độ cao ---------- */
+.tprof { position: relative; margin-top: 16px; background: #fff; border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; }
+.tprof__svg { width: 100%; height: auto; cursor: crosshair; touch-action: pan-y; }
+.p-grid { stroke: var(--mist); stroke-width: 2; stroke-dasharray: 5 6; fill: none; }
+.p-label { font: 600 15px var(--body); fill: #456362; }
+.p-area { fill: #BFD9CF; }
+.p-line { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+.p-axis { stroke: var(--ink); stroke-width: 3; fill: none; }
+.p-pin circle { fill: var(--paper); stroke: var(--ink); stroke-width: 3; }
+.p-pin text { font: 400 12px var(--display); fill: var(--ink); }
+.p-pin.is-active circle { fill: var(--momiji); }
+.p-pin.is-active text { fill: var(--paper); }
+.p-cursor { pointer-events: none; }
+.p-cursor path { stroke: var(--momiji); stroke-width: 3; fill: none; }
+.p-cursor circle { fill: var(--momiji); stroke: var(--paper); stroke-width: 3; }
+.tprof__read { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; padding: 8px 14px 10px; border-top: 3px solid var(--ink); font-weight: 600; font-size: .95rem; font-variant-numeric: tabular-nums; }
+.tprof__read b { font-family: var(--display); font-weight: 400; font-size: 1.1rem; }
+
+/* ---------- điểm hay + cân nhắc ---------- */
+.trail__cols { display: grid; gap: 34px; margin-top: 34px; }
+.sights { counter-reset: sight; display: grid; gap: 4px; }
+.sights li { counter-increment: sight; border-radius: 10px; padding: 4px 10px 10px; transition: background .2s; }
+.sights li.is-active { background: #FFF1C2; }
+.sights button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 4px 0; font: inherit; color: inherit; text-align: left; background: none; border: 0; cursor: pointer; }
+.sights button::before { content: counter(sight); flex: none; width: 34px; height: 34px; display: grid; place-items: center; font-family: var(--display); font-size: .95rem; background: var(--icho); border: 3px solid var(--ink); border-radius: 50%; transition: background .2s, color .2s; }
+.sights li.is-active button::before { background: var(--momiji); color: var(--paper); }
+.sights b { flex: 1; font-weight: 800; font-size: 1.08rem; }
+.sights small { font-weight: 700; font-size: .85rem; color: #456362; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sights p { margin-left: 46px; max-width: 36em; }
+.trail__side h4 + ul { margin-bottom: 26px; }
+.trail__side li { position: relative; padding-left: 26px; }
+.trail__side li + li { margin-top: 8px; }
+.trail__side li::before { content: ""; position: absolute; left: 2px; top: .42em; width: 12px; height: 12px; border: 3px solid var(--ink); }
+.yes li::before { background: var(--icho); border-radius: 50%; }
+.no li::before { background: var(--momiji); transform: rotate(45deg); }
+.trail__status { padding: 10px 14px; background: #FFE9A8; border-left: 6px solid var(--rail); border-radius: 4px; font-size: .96rem; }
+.trail__gmaps { display: inline-block; margin-top: 18px; font-weight: 800; padding: 12px 18px; background: var(--paper); border: 3px solid var(--ink); border-radius: 10px; box-shadow: 4px 4px 0 var(--ink); text-decoration: none; }
+.trail__gmaps:hover { background: var(--icho); }
+.choose__credit { margin-top: 40px; font-size: .88rem; color: #456362; max-width: 50em; }
+
+@media (min-width: 760px) {
+  .plans { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .trail__cols { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 56px; }
+}
+@media (max-width: 759px) {
+  .line__stops a { font-stretch: 84%; }
+  .sign__plan { padding-inline: 18px; }
+  .plan { padding: 16px 16px 18px; }
+  .plan__stats { grid-template-columns: repeat(2, 1fr); }
+  .tmap__stage { width: 760px; }
+  .tmap__hint { display: block; }
+  .tmap__replay { position: static; display: block; margin: 0; width: 100%; border-width: 3px 0 0; border-radius: 0; padding: 14px; font-size: .95rem; }
+  .sights p { margin-left: 0; }
+  .p-label { font-size: 14px; }
+}
+@media (max-width: 359px) {
+  .line__stops a { font-size: .66rem; font-stretch: 78%; }
+}
+@media (hover: none) {
+  .tmap__replay:hover, .trail__gmaps:hover { background: var(--paper); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .m-flow { animation: none; }
+}

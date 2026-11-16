@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="vi">
+<html lang="vi" data-plan="a">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Okutama 21.11 — một ngày ngắm lá đỏ</title>
-  <meta name="description" content="Kế hoạch đi Okutama một ngày ngắm lá đỏ, thứ Bảy 21/11/2026: lịch trình theo giờ, tàu xe, đồ cần mang, chi phí và lưu ý.">
+  <meta name="description" content="Kế hoạch đi Okutama một ngày ngắm lá đỏ, thứ Bảy 21/11/2026: hai cung đường đi bộ có bản đồ, lịch trình theo giờ, tàu xe, đồ cần mang, chi phí và lưu ý.">
   <meta property="og:title" content="Okutama 21.11 — một ngày ngắm lá đỏ">
   <meta property="og:description" content="Hẹn 08:00 ở ga Tachikawa, tàu 08:12, hồ Okutama, 9,4 km đường xưa Mukashi Michi, onsen rồi về.">
   <meta property="og:image" content="assets/trailer-poster.jpg">
@@ -16,15 +16,16 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a class="skip" href="#lich-trinh">Bỏ qua, tới lịch trình</a>
+  <a class="skip" href="#cung-duong">Bỏ qua, tới phần chọn cung đường</a>
   <canvas id="leaves" aria-hidden="true"></canvas>
 
   <!-- Thanh điều hướng dạng sơ đồ tuyến tàu -->
   <nav class="line" aria-label="Các phần của trang">
     <a class="line__home" href="#top" lang="ja" aria-label="Về đầu trang">奥多摩</a>
     <ol class="line__stops">
+      <li><a href="#cung-duong">Tuyến</a></li>
       <li><a href="#lich-trinh">Lịch trình</a></li>
-      <li><a href="#di-chuyen">Di chuyển</a></li>
+      <li><a href="#di-chuyen">Tàu xe</a></li>
       <li><a href="#hanh-ly">Hành lý</a></li>
       <li><a href="#la-do">Lá đỏ</a></li>
       <li><a href="#chi-phi">Chi phí</a></li>
@@ -45,7 +46,7 @@
         <span class="hero__kanji" lang="ja" aria-hidden="true"><span>奥</span><span>多</span><span>摩</span></span>
         <span class="hero__line">Okutama, một ngày ngắm lá đỏ</span>
       </h1>
-      <p class="hero__lead">Thứ Bảy 21/11/2026. Hẹn nhau 08:00 ở ga Tachikawa, lên tàu 08:12, ngắm hồ buổi sáng, đi bộ 9,4 km đường xưa Mukashi Michi xuôi về thị trấn, ngâm onsen rồi về lại Tachikawa lúc 17:54.</p>
+      <p class="hero__lead">Thứ Bảy 21/11/2026. Hẹn nhau 08:00 ở ga Tachikawa, lên tàu 08:12, đi bộ ngắm lá đỏ theo một trong hai cung đường, ghé hồ Okutama, ngâm onsen rồi về lại Tachikawa lúc 17:54.</p>
 
       <div class="countdown" id="countdown">
         <p class="countdown__label" id="countdown-label">Còn lại đến chuyến tàu 08:12 ở Tachikawa</p>
@@ -74,7 +75,7 @@
       <div class="carriage__inner">
         <div class="carriage__copy">
           <h2 id="trailer-title">Cả ngày trong 20 giây</h2>
-          <p>Xem qua cửa sổ tàu: từ sân ga Tachikawa buổi sáng tới lúc mặt trời lặn sau núi. Chiếc đồng hồ góc dưới chạy theo đúng giờ của chuyến đi.</p>
+          <p>Xem qua cửa sổ tàu: từ sân ga Tachikawa buổi sáng tới lúc mặt trời lặn sau núi. Chiếc đồng hồ góc dưới chạy theo đúng giờ của chuyến đi. Video kể theo phương án A.</p>
           <button class="btn" id="video-toggle" type="button" aria-pressed="false">Phát video</button>
         </div>
         <div class="window">
@@ -87,6 +88,138 @@
       </div>
     </section>
 
+    <!-- ============ CHỌN CUNG ĐƯỜNG ============ -->
+    <section class="choose" id="cung-duong" aria-labelledby="h-cung-duong">
+      <div class="wrap">
+        <header class="sign">
+          <p class="sign__kanji" lang="ja">道順</p>
+          <h2 id="h-cung-duong">Chọn cung đường</h2>
+          <p class="sign__sub">Hai phương án đi chung một chuyến tàu và cùng tới ga Okutama lúc 09:16, nên cả nhóm có thể chốt ngay tại ga tùy thời tiết. Bấm chọn một phương án, lịch trình và chi phí bên dưới sẽ đổi theo.</p>
+          <div class="sign__band"><a class="sign__prev" href="#trailer">Video</a><span lang="ja">奥多摩</span><a class="sign__next" href="#lich-trinh">Lịch trình</a></div>
+        </header>
+
+        <div class="plans" role="radiogroup" aria-label="Phương án đi bộ">
+          <button class="plan" type="button" role="radio" aria-checked="true" data-choose="a">
+            <span class="plan__tag">Phương án A</span>
+            <span class="plan__name">Đường xưa Mukashi Michi</span>
+            <span class="plan__desc">Xe buýt lên hồ Okutama rồi đi bộ theo con đường cổ về lại ga. Một mạch, có cảm giác hành trình.</span>
+            <svg class="plan__spark" data-spark="a" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span class="plan__stats">
+              <span><b>10,1 km</b>đi bộ</span>
+              <span><b>4 giờ</b>tính cả nghỉ</span>
+              <span><b>164 m</b>leo lên</span>
+              <span><b>355 m</b>xuống dốc</span>
+            </span>
+            <span class="plan__pick">Chọn phương án A</span>
+          </button>
+          <button class="plan" type="button" role="radio" aria-checked="false" data-choose="b">
+            <span class="plan__tag">Phương án B</span>
+            <span class="plan__name">Hẻm núi sông Tama</span>
+            <span class="plan__desc">Đi bộ xuôi dòng từ ga Okutama tới ga Hatonosu qua ba hẻm núi, buổi chiều ra hồ bằng xe buýt. Nhẹ, hợp ngày mưa nhỏ.</span>
+            <svg class="plan__spark" data-spark="b" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"></svg>
+            <span class="plan__stats">
+              <span><b>5,5 km</b>đi bộ</span>
+              <span><b>2,5 giờ</b>tính cả nghỉ</span>
+              <span><b>119 m</b>leo lên</span>
+              <span><b>139 m</b>xuống dốc</span>
+            </span>
+            <span class="plan__pick">Chọn phương án B</span>
+          </button>
+        </div>
+        <p class="plans__note">Hai đường độ cao phía trên vẽ cùng một tỉ lệ để so độ dốc cho công bằng.</p>
+
+        <!-- ---------- Chi tiết A ---------- -->
+        <article class="trail" data-plan="a" aria-labelledby="t-a">
+          <h3 id="t-a">Phương án A: từ hồ Okutama về ga theo đường xưa</h3>
+          <p class="trail__lead">Mukashi Michi là con đường Ōme cũ, dân làng dùng để ra chợ trước khi có quốc lộ. Đường men sườn núi phía trên sông Tama, qua xóm nhỏ, miếu đá và hai cây cầu treo. Đi chiều từ hồ về ga thì gần như toàn xuống dốc.</p>
+
+          <div class="tmap" data-map="a">
+            <p class="tmap__hint">Vuốt ngang để xem hết bản đồ. Chạm vào số để xem tên điểm.</p>
+          </div>
+          <div class="tprof" data-profile="a" aria-hidden="true"></div>
+
+          <div class="trail__cols">
+            <div>
+              <h4>Điểm hay dọc đường</h4>
+              <ol class="sights" data-sights="a">
+                <li><button type="button"><b>Hồ Okutama và đập Ogōchi</b><small>km 0</small></button><p>Điểm xuất phát. Mặt hồ màu ngọc, sườn núi đỏ vàng soi bóng, đẹp nhất khi nắng sáng còn xiên. Có tháp ngắm cảnh trên thân đập và nhà trưng bày miễn phí.</p></li>
+                <li><button type="button"><b>Lối rừng Mizune</b><small>km 1,7</small></button><p>Đoạn leo dốc duy nhất, lên khoảng 65 m tới điểm cao nhất 596 m. Đường đất dưới tán tuyết tùng, nhìn xuống hồ và thân đập qua kẽ lá.</p></li>
+                <li><button type="button"><b>Khúc quanh Nishikubo</b><small>km 2,9</small></button><p>Đường đổ dốc gấp xuống thung lũng. Có nhà vệ sinh công cộng, từ đây trở đi là đường làng dễ đi.</p></li>
+                <li><button type="button"><b>Cầu treo Dōdokoro</b><small>km 3,6</small></button><p>Cây cầu treo đầu tiên bắc qua sông Tama. Ra giữa cầu chụp hai bờ lá đỏ rồi quay lại đường chính.</p></li>
+                <li><button type="button"><b>Cầu treo Shidakura</b><small>km 4,6</small></button><p>Cầu treo bắc qua hẻm Sōgaku đầy đá tảng lớn và nước xanh. Đây là điểm chụp ảnh đẹp nhất tuyến, gần đó có cây phong cổ thụ Iroha-kaede.</p></li>
+                <li><button type="button"><b>Đền Shirahige và vách đá lớn</b><small>km 5,8</small></button><p>Ngôi đền nhỏ nép dưới một vách đá vôi khổng lồ nghiêng hẳn ra ngoài. Leo vài bậc đá là tới.</p></li>
+                <li><button type="button"><b>Thác Fudō-no-uwataki</b><small>km 6,7</small></button><p>Thác nhỏ ngay sát đường ở xóm Sakai. Sau thác là đoạn đường bằng nhìn xuống cầu quốc lộ.</p></li>
+                <li><button type="button"><b>Ga Okutama</b><small>km 10,1</small></button><p>Xuống dốc Haguro là về tới thị trấn. Onsen Moegi no Yu và quán bia ở ngay gần.</p></li>
+              </ol>
+            </div>
+            <div class="trail__side">
+              <h4>Hợp khi</h4>
+              <ul class="yes">
+                <li>Trời khô ráo, cả nhóm đi bộ được 4 tiếng.</li>
+                <li>Muốn đi một mạch từ hồ về ga, không phải canh giờ tàu xe giữa chừng.</li>
+                <li>Thích cầu treo, xóm núi và không khí đường mòn hơn là hồ nước.</li>
+              </ul>
+              <h4>Cân nhắc</h4>
+              <ul class="no">
+                <li>Dài 10 km. Đoạn đầu leo dốc trên đường đất, trơn khi lá ướt.</li>
+                <li>Gần như không có hàng quán, phải mang theo bữa trưa.</li>
+                <li>Phải ra khỏi đường mòn trước 15:30 vì trời tối sớm.</li>
+                <li>Muốn bỏ giữa chừng thì leo lên quốc lộ 411 phía trên để bắt xe buýt.</li>
+              </ul>
+              <p class="trail__status"><b>Tình trạng:</b> thông toàn tuyến theo Okutama Visitor Center (bản cập nhật 6/11).</p>
+              <a class="trail__gmaps" data-gmaps="a" href="#" target="_blank" rel="noopener">Mở cung này trên Google Maps</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- ---------- Chi tiết B ---------- -->
+        <article class="trail" data-plan="b" aria-labelledby="t-b">
+          <h3 id="t-b">Phương án B: xuôi dòng sông Tama từ Okutama tới Hatonosu</h3>
+          <p class="trail__lead">Không cần xe buýt lúc sáng. Ra khỏi ga là xuống ngay bờ sông, đi xuôi dòng theo tuyến Ōtama Walking Trail qua ba hẻm núi và một hồ nhỏ, kết thúc ở ga Hatonosu. Từ đó đi tàu 6 phút về lại Okutama, buổi chiều ra hồ bằng xe buýt.</p>
+
+          <div class="tmap" data-map="b">
+            <p class="tmap__hint">Vuốt ngang để xem hết bản đồ. Chạm vào số để xem tên điểm.</p>
+          </div>
+          <div class="tprof" data-profile="b" aria-hidden="true"></div>
+
+          <div class="trail__cols">
+            <div>
+              <h4>Điểm hay dọc đường</h4>
+              <ol class="sights" data-sights="b">
+                <li><button type="button"><b>Ga Okutama</b><small>km 0</small></button><p>Điểm xuất phát, cao 339 m. Đi vệ sinh và lấy bản đồ ở quầy du lịch cạnh ga.</p></li>
+                <li><button type="button"><b>Hẻm Hikawa</b><small>km 0,4</small></button><p>Chỗ sông Nippara nhập vào sông Tama, cách ga 5 phút. Hai cầu treo nhỏ Hikawa-kobashi và Tōke-bashi, lá đỏ rủ sát mặt nước.</p></li>
+                <li><button type="button"><b>Cầu Moegi</b><small>km 1,0</small></button><p>Cầu đi bộ đưa mình từ lối rừng bờ nam trở lại bờ bắc, ngay cạnh onsen Moegi no Yu.</p></li>
+                <li><button type="button"><b>Kazuma no Kiritoshi</b><small>km 2,9</small></button><p>Đoạn đường xẻ xuyên vách đá bằng tay, dân hai làng làm xong năm 1703. Vẫn còn thấy vết đục trên đá.</p></li>
+                <li><button type="button"><b>Cầu Kazumakyō</b><small>km 3,4</small></button><p>Cầu bắc qua hẻm Kazuma. Nhìn xuống là đầu hồ Shiromaru xanh ngọc, hay có người chèo thuyền.</p></li>
+                <li><button type="button"><b>Hồ và đập Shiromaru</b><small>km 4,5</small></button><p>Lối mòn bờ nam đi sát mép nước suốt 1 km. Thân đập đang đóng để sửa tới cuối tháng 2/2027, nên không sang bờ bắc xem đường cho cá bơi được.</p></li>
+                <li><button type="button"><b>Hẻm Hatonosu</b><small>km 5,1</small></button><p>Đoạn đẹp nhất: vách đá dựng đứng, thác Suijin, đền Tamagawa-suijin và cầu treo Hatonosu-kobashi giữa rừng phong.</p></li>
+                <li><button type="button"><b>Ga Hatonosu</b><small>km 5,5</small></button><p>Leo dốc ngắn lên ga. Quán cơm niêu kamameshi cách ga khoảng 60 m, chỉ nhận tiền mặt.</p></li>
+              </ol>
+            </div>
+            <div class="trail__side">
+              <h4>Hợp khi</h4>
+              <ul class="yes">
+                <li>Trời âm u hoặc mưa nhỏ, hay nhóm có người ít đi bộ.</li>
+                <li>Muốn có nhiều thời gian ở hồ và onsen hơn là trên đường.</li>
+                <li>Cần lối thoát dễ: ga Shiromaru cách cầu Kazumakyō vài phút đi bộ.</li>
+              </ul>
+              <h4>Cân nhắc</h4>
+              <ul class="no">
+                <li>Khoảng 2 km giữa cầu Moegi và Kazuma đi trên vỉa hè quốc lộ 411, có xe chạy và ít cảnh.</li>
+                <li>Lối đi sát sông, đá và rễ cây trơn khi ướt. Mưa to nước dâng thì đường hẻm núi có thể bị đóng.</li>
+                <li>Phải canh giờ tàu ở Hatonosu và xe buýt ra hồ.</li>
+                <li>Hẻm núi thấp hơn hồ khoảng 200 m nên lá chín muộn hơn một chút.</li>
+              </ul>
+              <p class="trail__status"><b>Tình trạng:</b> đường mòn đi được, riêng thân đập Shiromaru đóng từ 28/9/2026 tới cuối tháng 2/2027 (Okutama Visitor Center).</p>
+              <a class="trail__gmaps" data-gmaps="b" href="#" target="_blank" rel="noopener">Mở cung này trên Google Maps</a>
+            </div>
+          </div>
+        </article>
+
+        <p class="choose__credit">Đường đi vẽ từ dữ liệu © OpenStreetMap, độ cao từ Cơ quan Thông tin Địa không gian Nhật Bản (GSI). Thời gian đi bộ là ước tính của mình.</p>
+      </div>
+    </section>
+
     <!-- ============ 1. LỊCH TRÌNH ============ -->
     <section class="day" id="lich-trinh" aria-labelledby="h-lich-trinh">
       <div class="day__stars" aria-hidden="true"></div>
@@ -95,7 +228,8 @@
           <p class="sign__kanji" lang="ja">行程</p>
           <h2 id="h-lich-trinh">Lịch trình</h2>
           <p class="sign__sub">Cuộn xuống và bầu trời sẽ trôi theo giờ trong ngày, từ lúc rời nhà 06:50 tới khi về tới nơi.</p>
-          <div class="sign__band"><a class="sign__prev" href="#trailer">Video</a><span lang="ja">奥多摩</span><a class="sign__next" href="#di-chuyen">Di chuyển</a></div>
+          <p class="sign__plan">Đang xem <strong data-plan="a">phương án A, đường xưa Mukashi Michi</strong><strong data-plan="b">phương án B, hẻm núi sông Tama</strong>. <a href="#cung-duong">Đổi phương án</a></p>
+          <div class="sign__band"><a class="sign__prev" href="#cung-duong">Tuyến</a><span lang="ja">奥多摩</span><a class="sign__next" href="#di-chuyen">Tàu xe</a></div>
         </header>
 
         <aside class="dial" aria-hidden="true">
@@ -161,10 +295,12 @@
               <time datetime="2026-11-21T09:16+09:00">09:16</time>
               <article class="plate">
                 <h3>Tới ga Okutama</h3>
-                <p>Đi vệ sinh, lấy bản đồ giấy ở quầy thông tin du lịch cạnh ga rồi ra bến xe buýt số 2 ngay trước cửa.</p>
+                <p>Đi vệ sinh, lấy bản đồ giấy ở quầy thông tin du lịch cạnh ga. Đây là lúc nhìn trời và chốt phương án.</p>
+                <p data-plan="a">Phương án A: ra bến xe buýt số 2 ngay trước cửa ga.</p>
+                <p data-plan="b">Phương án B: không cần xe buýt, đi bộ luôn từ ga xuống bờ sông.</p>
               </article>
             </li>
-            <li class="stop" data-min="570" data-mode="bus" data-label="Trên xe buýt">
+            <li data-plan="a" class="stop" data-min="570" data-mode="bus" data-label="Trên xe buýt">
               <time datetime="2026-11-21T09:30+09:00">09:30</time>
               <article class="plate">
                 <h3>Xe buýt 奥09 ra hồ</h3>
@@ -172,7 +308,7 @@
                 <p class="plate__tip">Xe đầy thì đợi chuyến 10:05 (奥12), vẫn kịp lịch.</p>
               </article>
             </li>
-            <li class="stop stop--big" data-min="590" data-mode="walk" data-label="Hồ Okutama">
+            <li data-plan="a" class="stop stop--big" data-min="590" data-mode="walk" data-label="Hồ Okutama">
               <time datetime="2026-11-21T09:50+09:00">09:50</time>
               <article class="plate">
                 <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 62 40 30l34 26 40-38 46 40 34-22 26 22v48H0z" fill="#3F7577"/><path d="M0 74h220v36H0z" fill="#2E8C8A"/><path d="M96 58h60l14 30H82z" fill="#E9EEEA" stroke="#0B2526" stroke-width="3" stroke-linejoin="round"/><path d="M24 88h30M70 98h44M150 96h40" stroke="#F6F8F3" stroke-width="3" stroke-linecap="round" opacity=".7"/><circle cx="30" cy="52" r="10" fill="#D7263D"/><circle cx="46" cy="58" r="9" fill="#F4B41A"/><circle cx="188" cy="60" r="11" fill="#F26B21"/><circle cx="204" cy="66" r="9" fill="#D7263D"/></svg>
@@ -181,7 +317,7 @@
                 <p class="plate__tip">Nắng sáng chiếu thẳng vào bờ đối diện, đây là lúc chụp hồ đẹp nhất trong ngày.</p>
               </article>
             </li>
-            <li class="stop stop--big" data-min="645" data-mode="walk" data-label="Đang đi bộ">
+            <li data-plan="a" class="stop stop--big" data-min="645" data-mode="walk" data-label="Đang đi bộ">
               <time datetime="2026-11-21T10:45+09:00">10:45</time>
               <article class="plate">
                 <h3>Vào đường mòn Mukashi Michi</h3>
@@ -189,14 +325,14 @@
                 <p>Đoạn đầu là lối rừng nhìn xuống hồ, sau đó men theo khe sông Tama qua các xóm nhỏ, miếu đá và vườn hồng.</p>
               </article>
             </li>
-            <li class="stop" data-min="735" data-mode="rest" data-label="Ăn trưa">
+            <li data-plan="a" class="stop" data-min="735" data-mode="rest" data-label="Ăn trưa">
               <time datetime="2026-11-21T12:15+09:00">12:15</time>
               <article class="plate">
                 <h3>Ăn trưa giữa rừng</h3>
                 <p>Trải bento ở một điểm nghỉ có ghế dọc đường. Rót trà nóng từ bình giữ nhiệt, lúc này là ấm nhất trong ngày.</p>
               </article>
             </li>
-            <li class="stop stop--big" data-min="780" data-mode="walk" data-label="Cầu treo">
+            <li data-plan="a" class="stop stop--big" data-min="780" data-mode="walk" data-label="Cầu treo">
               <time datetime="2026-11-21T13:00+09:00">13:00</time>
               <article class="plate">
                 <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 110V64l40-18 26 22v42zM220 110V60l-44-16-24 24v42z" fill="#7A2130"/><circle cx="18" cy="60" r="13" fill="#D7263D"/><circle cx="40" cy="52" r="12" fill="#F26B21"/><circle cx="200" cy="54" r="13" fill="#F4B41A"/><circle cx="178" cy="50" r="11" fill="#D7263D"/><path d="M30 70 62 28Q110 78 158 28l32 42" fill="none" stroke="#0B2526" stroke-width="3"/><path d="M74 42v28M86 50v20M98 55v15M110 57v13M122 55v15M134 50v20M146 42v28" stroke="#0B2526" stroke-width="2"/><rect x="26" y="68" width="168" height="7" rx="2" fill="#F6F8F3" stroke="#0B2526" stroke-width="3"/><rect x="58" y="22" width="8" height="56" rx="2" fill="#D7263D" stroke="#0B2526" stroke-width="3"/><rect x="154" y="22" width="8" height="56" rx="2" fill="#D7263D" stroke="#0B2526" stroke-width="3"/></svg>
@@ -205,11 +341,80 @@
                 <p class="plate__tip">Mỗi lượt chỉ vài người được qua. Xem biển giới hạn ở đầu cầu và đừng nhún nhảy.</p>
               </article>
             </li>
-            <li class="stop" data-min="885" data-mode="walk" data-label="Về thị trấn">
+            <li data-plan="a" class="stop" data-min="885" data-mode="walk" data-label="Về thị trấn">
               <time datetime="2026-11-21T14:45+09:00">14:45</time>
               <article class="plate">
                 <h3>Về tới thị trấn Okutama</h3>
                 <p>Còn sức thì xuống hẻm Hikawa ngay sát ga: hai cầu treo nhỏ Hikawa-kobashi và Tōke-bashi, lá đỏ rủ sát mặt nước.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop stop--big" data-min="565" data-mode="walk" data-label="Hẻm Hikawa">
+              <time datetime="2026-11-21T09:25+09:00">09:25</time>
+              <article class="plate">
+                <h3>Xuống hẻm Hikawa</h3>
+                <p>Cách ga 5 phút là chỗ sông Nippara nhập vào sông Tama. Qua hai cầu treo nhỏ Hikawa-kobashi và Tōke-bashi, theo lối rừng bờ nam tới cầu Moegi rồi đi tiếp dọc quốc lộ 411.</p>
+                <p class="plate__tip">Đoạn dọc quốc lộ dài khoảng 2 km, đi hàng một trên vỉa hè.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="630" data-mode="walk" data-label="Hẻm Kazuma">
+              <time datetime="2026-11-21T10:30+09:00">10:30</time>
+              <article class="plate">
+                <h3>Kazuma no Kiritoshi và cầu Kazumakyō</h3>
+                <p>Rẽ khỏi quốc lộ vào đoạn đường cổ xẻ xuyên vách đá từ năm 1703, rồi qua cầu Kazumakyō sang bờ nam. Dưới chân cầu là đầu hồ Shiromaru xanh ngọc.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="670" data-mode="walk" data-label="Hồ Shiromaru">
+              <time datetime="2026-11-21T11:10+09:00">11:10</time>
+              <article class="plate">
+                <h3>Men bờ hồ Shiromaru tới đập</h3>
+                <p>Một cây số lối mòn sát mép nước, yên tĩnh nhất tuyến. Tới đập thì đi tiếp theo bờ nam.</p>
+                <p class="plate__tip">Thân đập đang đóng để sửa tới cuối tháng 2/2027, đừng tìm cách băng qua.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop stop--big" data-min="695" data-mode="walk" data-label="Hẻm Hatonosu">
+              <time datetime="2026-11-21T11:35+09:00">11:35</time>
+              <article class="plate">
+                <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 110V40l30-22 26 30 8 62zM220 110V36l-36-20-22 34-6 60z" fill="#5E6F6C"/><path d="M64 110l-8-48 12-8 6 56zM156 110l6-52-12-6-6 58z" fill="#3F4F4D"/><path d="M70 82h80v28H70z" fill="#2E8C8A"/><path d="M80 94h22M112 102h30" stroke="#F6F8F3" stroke-width="3" stroke-linecap="round" opacity=".7"/><circle cx="20" cy="26" r="13" fill="#D7263D"/><circle cx="42" cy="34" r="11" fill="#F26B21"/><circle cx="200" cy="24" r="13" fill="#F4B41A"/><circle cx="178" cy="30" r="11" fill="#D7263D"/><path d="M40 50Q110 74 180 48" fill="none" stroke="#0B2526" stroke-width="3"/><path d="M62 55v9M84 60v6M110 62v5M136 60v6M158 55v8" stroke="#0B2526" stroke-width="2"/><rect x="38" y="63" width="144" height="6" rx="2" fill="#F6F8F3" stroke="#0B2526" stroke-width="3"/></svg>
+                <h3>Hẻm Hatonosu</h3>
+                <p>Đoạn đẹp nhất của phương án B: vách đá dựng đứng hai bên dòng nước, thác Suijin, ngôi đền nhỏ Tamagawa-suijin và cầu treo Hatonosu-kobashi giữa rừng phong.</p>
+                <p class="plate__tip">Đá ven sông rất trơn. Chụp ảnh thì đứng trên lối mòn, đừng xuống sát mép nước.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="730" data-mode="rest" data-label="Ăn trưa">
+              <time datetime="2026-11-21T12:10+09:00">12:10</time>
+              <article class="plate">
+                <h3>Ăn trưa ở Hatonosu</h3>
+                <p>Mở bento ở khu ghế nghỉ gần ga, hoặc thử cơm niêu kamameshi ở quán cách ga khoảng 60 m. Quán chỉ nhận tiền mặt và nấu từng niêu nên phải chờ.</p>
+                <p class="plate__tip">Ăn ở quán thì dời sang chuyến tàu 13:28 và xe buýt 13:45.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="774" data-mode="train" data-label="Tàu về Okutama">
+              <time datetime="2026-11-21T12:54+09:00">12:54</time>
+              <article class="plate">
+                <h3>Tàu từ Hatonosu về Okutama</h3>
+                <p>Chỉ 6 phút, tới ga Okutama lúc 13:00, hết 199 yên.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="790" data-mode="bus" data-label="Trên xe buýt">
+              <time datetime="2026-11-21T13:10+09:00">13:10</time>
+              <article class="plate">
+                <h3>Xe buýt 奥09 ra hồ</h3>
+                <p>Bến số 2 trước ga, xuống trạm <span lang="ja">奥多摩湖</span> (Okutama-ko) sau khoảng 15 đến 20 phút. Chuyến kế tiếp là 13:32 và 13:45.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop stop--big" data-min="810" data-mode="walk" data-label="Hồ Okutama">
+              <time datetime="2026-11-21T13:30+09:00">13:30</time>
+              <article class="plate">
+                <svg class="plate__art" viewBox="0 0 220 110" aria-hidden="true"><path d="M0 62 40 30l34 26 40-38 46 40 34-22 26 22v48H0z" fill="#3F7577"/><path d="M0 74h220v36H0z" fill="#2E8C8A"/><path d="M96 58h60l14 30H82z" fill="#E9EEEA" stroke="#0B2526" stroke-width="3" stroke-linejoin="round"/><path d="M24 88h30M70 98h44M150 96h40" stroke="#F6F8F3" stroke-width="3" stroke-linecap="round" opacity=".7"/><circle cx="30" cy="52" r="10" fill="#D7263D"/><circle cx="46" cy="58" r="9" fill="#F4B41A"/><circle cx="188" cy="60" r="11" fill="#F26B21"/><circle cx="204" cy="66" r="9" fill="#D7263D"/></svg>
+                <h3>Hồ Okutama và đập Ogōchi</h3>
+                <p>Khoảng 80 phút thong thả: đi bộ trên thân đập, lên tháp ngắm cảnh, ghé nhà trưng bày Mizu to Midori no Fureaikan miễn phí. Sườn núi quanh hồ là nơi lá đỏ dày nhất.</p>
+              </article>
+            </li>
+            <li data-plan="b" class="stop" data-min="890" data-mode="bus" data-label="Xe buýt về ga">
+              <time datetime="2026-11-21T14:50+09:00">14:50</time>
+              <article class="plate">
+                <h3>Xe buýt từ hồ về ga</h3>
+                <p>Về tới ga Okutama khoảng 15:08. Lỡ thì còn chuyến 15:21.</p>
               </article>
             </li>
             <li class="stop stop--big" data-min="915" data-mode="rest" data-label="Thư giãn">
@@ -318,12 +523,13 @@
           <div class="bus">
             <h3>Xe buýt từ ga ra hồ</h3>
             <p>Bến số 2 trước ga Okutama. Mọi tuyến 奥09, 奥10, 奥12 đều qua trạm <span lang="ja">奥多摩湖</span>.</p>
-            <p class="times"><b>09:30</b><span>10:05</span><span>10:35</span><span>11:30</span></p>
+            <p class="times"><b data-plan="a">09:30</b><span data-plan="b">09:30</span><span>10:05</span><span>10:35</span><span>11:30</span><span>12:34</span><b data-plan="b">13:10</b><span data-plan="a">13:10</span><span>13:32</span><span>13:45</span></p>
           </div>
           <div class="bus">
             <h3>Xe buýt từ hồ về ga</h3>
-            <p>Dùng khi trời mưa hoặc nhóm muốn bỏ đoạn đi bộ. Mất khoảng 18 phút.</p>
-            <p class="times"><span>13:19</span><span>13:45</span><span>14:20</span><span>14:50</span><span>15:21</span><span>15:45</span><span>16:08</span><span>16:27</span></p>
+            <p data-plan="a">Dùng khi trời mưa hoặc nhóm muốn bỏ đoạn đi bộ. Mất khoảng 18 phút.</p>
+            <p data-plan="b">Phương án B về bằng chuyến 14:50. Mất khoảng 18 phút.</p>
+            <p class="times"><span>13:19</span><span>13:45</span><span>14:20</span><b data-plan="b">14:50</b><span data-plan="a">14:50</span><span>15:21</span><span>15:45</span><span>16:08</span><span>16:27</span></p>
           </div>
           <div class="bus">
             <h3>Mẹo nhỏ</h3>
@@ -331,6 +537,7 @@
               <li>Nạp thẻ Suica hoặc PASMO từ tối hôm trước, tối thiểu 5.000 yên.</li>
               <li>Holiday Rapid số 3 chạy từ Tokyo 07:29, qua Kanda, Ochanomizu, Shinjuku 07:44, Nakano, Mitaka, Kokubunji rồi mới tới Tachikawa.</li>
               <li>Tàu Holiday Rapid chỉ dừng ở Mitake giữa Ōme và Okutama.</li>
+              <li data-plan="b">Tàu Hatonosu về Okutama: 12:20, 12:54, 13:28. Đi 6 phút, 199 yên.</li>
             </ul>
           </div>
         </div>
@@ -344,7 +551,7 @@
           <p class="sign__kanji" lang="ja">持ち物</p>
           <h2 id="h-hanh-ly">Đồ cần chuẩn bị</h2>
           <p class="sign__sub">Tích từng món để bỏ vào ba lô. Danh sách được lưu ngay trên máy bạn, mở lại vẫn còn.</p>
-          <div class="sign__band"><a class="sign__prev" href="#di-chuyen">Di chuyển</a><span lang="ja">奥多摩</span><a class="sign__next" href="#la-do">Lá đỏ</a></div>
+          <div class="sign__band"><a class="sign__prev" href="#di-chuyen">Tàu xe</a><span lang="ja">奥多摩</span><a class="sign__next" href="#la-do">Lá đỏ</a></div>
         </header>
 
         <div class="pack__grid">
@@ -446,23 +653,23 @@
             <p class="ticket__head"><span lang="ja">獨協大学前 ⇄ 奥多摩</span><span>21.11.2026</span></p>
             <dl>
               <div><dt>Tàu khứ hồi tới Okutama</dt><dd>3.504 ¥</dd></div>
-              <div><dt>Xe buýt ga ra hồ <small>ước tính</small></dt><dd>~400 ¥</dd></div>
+              <div data-plan="a"><dt>Xe buýt ga ra hồ <small>ước tính</small></dt><dd>~400 ¥</dd></div>
+              <div data-plan="b"><dt>Xe buýt ra hồ, hai chiều <small>ước tính</small></dt><dd>~800 ¥</dd></div>
+              <div data-plan="b"><dt>Tàu Hatonosu về Okutama</dt><dd>199 ¥</dd></div>
               <div><dt>Bento, nước, đồ ăn vặt</dt><dd>~1.500 ¥</dd></div>
               <div><dt>Onsen Moegi no Yu <small>tùy chọn</small></dt><dd>~1.200 ¥</dd></div>
               <div><dt>Bia thủ công hoặc cà phê <small>tùy chọn</small></dt><dd>~1.000 ¥</dd></div>
             </dl>
-            <p class="ticket__total"><span>Tổng cộng khoảng</span><strong>5.400 đến 7.600 ¥</strong></p>
+            <p class="ticket__total"><span>Tổng cộng khoảng</span><strong data-plan="a">5.400 đến 7.600 ¥</strong><strong data-plan="b">6.000 đến 8.200 ¥</strong></p>
           </div>
 
           <div class="planb">
-            <h3>Phương án B cho ngày mưa hoặc muốn đi nhẹ</h3>
-            <p>Bỏ Mukashi Michi, đi tuyến hẻm núi ngắn khoảng 4 km, mất 1,5 đến 2 tiếng, gần như bằng phẳng.</p>
+            <h3>Trả bằng gì</h3>
+            <p>Bảng bên tính cho <strong data-plan="a">phương án A</strong><strong data-plan="b">phương án B</strong>. Đổi phương án ở mục <a href="#cung-duong">Chọn cung đường</a> thì con số đổi theo.</p>
             <ol class="planb__steps">
-              <li><b>Ga Hatonosu</b> <span lang="ja">鳩ノ巣</span>. Đi tàu thường từ Ōme vì Holiday Rapid không dừng ở đây.</li>
-              <li><b>Hẻm Hatonosu</b>, vách đá và cầu treo ngay dưới ga.</li>
-              <li><b>Đập Shiromaru</b>, mặt hồ nhỏ xanh ngọc và đường cho cá bơi ngược.</li>
-              <li><b>Hẻm Kazuma</b> rồi đi tiếp về ga Okutama.</li>
-              <li>Còn thời gian thì bắt xe buýt ra hồ, về bằng chuyến 14:50 hoặc 15:21.</li>
+              <li><b>Thẻ Suica hoặc PASMO</b> cho tàu và xe buýt. Nạp sẵn ít nhất 5.000 yên.</li>
+              <li><b>Tiền mặt</b> cho onsen, quán cơm niêu ở Hatonosu, quán nhỏ và máy bán nước.</li>
+              <li><b>Phương án B đắt hơn khoảng 600 yên</b> vì thêm một lượt xe buýt và một chặng tàu ngắn.</li>
             </ol>
           </div>
         </div>
@@ -480,12 +687,12 @@
         </header>
 
         <ul class="cares">
-          <li><h3>Ra khỏi đường mòn trước 15:30</h3><p>Mặt trời lặn lúc 16:31 nhưng khe núi tối sớm hơn nhiều. Nếu 13:30 vẫn chưa tới cầu Shidakura, rẽ ra quốc lộ 411 và bắt xe buýt về ga.</p></li>
+          <li><h3>Ra khỏi đường mòn trước 15:30</h3><p>Mặt trời lặn lúc 16:31 nhưng khe núi tối sớm hơn nhiều. Đi phương án A mà 13:30 vẫn chưa tới cầu Shidakura thì rẽ ra quốc lộ 411 và bắt xe buýt về ga.</p></li>
           <li><h3>Gấu</h3><p>Năm nay Okutama từng đóng một số đường núi vì gấu. Mukashi Michi gần khu dân cư nên ít rủi ro hơn, nhưng vẫn nên đeo chuông, đi theo nhóm và không bỏ lại đồ ăn.</p></li>
-          <li><h3>Tình trạng đường mòn</h3><p>Trung tâm Okutama Visitor Center ghi nhận Mukashi Michi thông toàn tuyến trong bản cập nhật 6/11. Xem lại vào tối thứ Sáu.</p></li>
+          <li><h3>Tình trạng đường mòn</h3><p>Theo Okutama Visitor Center: Mukashi Michi và hẻm Hikawa thông toàn tuyến, riêng thân đập Shiromaru đóng tới cuối tháng 2/2027. Xem lại vào tối thứ Sáu.</p></li>
           <li><h3>Cầu treo</h3><p>Tuân theo số người tối đa ghi ở đầu cầu. Cất điện thoại vào túi có khóa khi đứng giữa cầu.</p></li>
           <li><h3>Sóng điện thoại</h3><p>Chập chờn ở nhiều đoạn. Hẹn trước điểm chờ nhau: mỗi cây cầu treo và mỗi nhà vệ sinh trên đường.</p></li>
-          <li><h3>Nếu dự báo mưa to</h3><p>Chuyển sang phương án B, hoặc dời sang Chủ nhật 22/11. Lá vẫn đang ở đỉnh tới cuối tháng.</p></li>
+          <li><h3>Nếu dự báo mưa</h3><p>Mưa nhỏ thì chọn phương án B. Mưa to thì cả hai cung đều trơn và hẻm núi có thể đóng, nên dời sang Chủ nhật 22/11. Lá vẫn đang ở đỉnh tới cuối tháng.</p></li>
         </ul>
 
         <div class="checks">
@@ -509,6 +716,8 @@
     <button class="btn btn--ghost" id="leaf-toggle" type="button" aria-pressed="true">Tắt lá rơi</button>
   </footer>
 
+  <script src="js/routes.js" defer></script>
+  <script src="js/trails.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

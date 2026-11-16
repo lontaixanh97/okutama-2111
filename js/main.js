@@ -346,7 +346,8 @@
   const dialSun = $('#dial-sun');
   const dialTime = $('#dial-time');
   const dialLabel = $('#dial-label');
-  const stops = $$('.stop', route).map((el) => ({ el, min: +el.dataset.min, mode: el.dataset.mode, label: el.dataset.label, y: 0 }));
+  const allStops = $$('.stop', route).map((el) => ({ el, min: +el.dataset.min, mode: el.dataset.mode, label: el.dataset.label, y: 0 }));
+  let stops = allStops; // chỉ các chặng của phương án đang chọn
   const SKY_A = [[410, '#2B4460'], [540, '#5FA3BF'], [720, '#6FB6CC'], [900, '#86B4C4'], [975, '#D9824F'], [1005, '#6B3A63'], [1045, '#1B1B3F'], [1143, '#12122E']];
   const SKY_B = [[410, '#F4B9A0'], [540, '#DDF0EE'], [720, '#E6F3EE'], [900, '#F6E3B8'], [975, '#F9C56B'], [1005, '#E4572E'], [1045, '#4A2F5E'], [1143, '#2A2148']];
   const SUNRISE = 382, SUNSET = 991;
@@ -354,6 +355,7 @@
 
   const measureDay = () => {
     const off = matchMedia('(max-width: 759px)').matches ? 19 : 29;
+    stops = allStops.filter((s) => s.el.offsetParent !== null);
     stops.forEach((s) => (s.y = s.el.offsetTop + off));
     const y0 = stops[0].y, y1 = stops[stops.length - 1].y;
     track.style.top = fill.style.top = `${y0}px`;
@@ -557,6 +559,7 @@
   const layout = () => { measureDay(); reached = -1; updateDay(); updateNav(true); parallax(); };
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', layout);
+  document.addEventListener('planchange', layout);
   addEventListener('pointermove', () => { if (!queued && window.scrollY < innerHeight) requestAnimationFrame(parallax); }, { passive: true });
   layout();
   addEventListener('load', layout);
