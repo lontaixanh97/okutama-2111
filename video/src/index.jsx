@@ -7,7 +7,7 @@ import "@fontsource/dela-gothic-one/japanese.css";
 import "@fontsource-variable/bricolage-grotesque/index.css";
 import { Trailer, FPS, W, H, DURATION } from "./Trailer";
 
-const SAMPLE = "奥多摩紅葉新宿立川青梅湖駅 Hẹn ở sân ga đỏ lá ngắm xuôi dốc Một ngày 0123456789:.,";
+const SAMPLE = "奥多摩紅葉新宿立川青梅湖駅獨協大学前西国分寺 Hẹn ở sân ga đỏ lá ngắm xuôi dốc Một ngày 0123456789:.,";
 
 const Root = () => {
   const [handle] = useState(() => delayRender("fonts"));

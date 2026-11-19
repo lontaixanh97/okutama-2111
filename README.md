@@ -56,7 +56,7 @@ python3 tools/build_routes.py js/routes.js
 
 - Cung đường: © OpenStreetMap contributors (ODbL). Độ cao: Cơ quan Thông tin Địa không gian Nhật Bản (GSI)
 - Thân đập Shiromaru đóng 28/9/2026 tới cuối 2/2027: Okutama Visitor Center
-- Giờ tàu: Yahoo! 乗換案内 và bảng giờ JR East cho thứ Bảy 21/11/2026, tính từ ga 獨協大学前, tập trung ở ga Tachikawa
+- Giờ tàu: Yahoo! 乗換案内 và bảng giờ JR East cho thứ Bảy 21/11/2026, tính từ ga 獨協大学前, cả nhóm gặp nhau ở ga Okutama lúc 10:30
 - Giờ xe buýt: NAVITIME, Nishi Tokyo Bus
 - Lá đỏ: Weathernews (hồ Okutama)
 - Đường mòn: Okutama Visitor Center, bản cập nhật 6/11/2026

@@ -283,9 +283,9 @@
   }, { threshold: 0.6 });
   $$('.flaps[data-board]').forEach((n) => { flapInit(n); boardIO.observe(n); });
 
-  // Đếm ngược tới chuyến 08:12 JST ở Tachikawa, ngày 21/11/2026
+  // Đếm ngược tới giờ hẹn 10:30 JST ở ga Okutama, ngày 21/11/2026
   (function countdown() {
-    const DEPART = Date.UTC(2026, 10, 20, 23, 12, 0);
+    const DEPART = Date.UTC(2026, 10, 21, 1, 30, 0);
     const HOME = Date.UTC(2026, 10, 21, 10, 3, 0);
     const label = $('#countdown-label');
     const units = {};

@@ -180,8 +180,8 @@ const Bridge = ({ frame }) => {
 const clockMinutes = (f) =>
   interpolate(
     f,
-    [0, 110, 150, 195, 225, 262, 300, 450, 500, 545, 600],
-    [472, 492, 492, 524, 556, 590, 645, 900, 991, 1018, 1074],
+    [0, 110, 138, 176, 212, 246, 262, 300, 450, 500, 545, 600],
+    [440, 454, 454, 521, 578, 619, 630, 655, 925, 991, 1018, 1143],
     clamp
   );
 const fmt = (m) => {
@@ -296,17 +296,16 @@ const Title = ({ frame }) => {
 
 /* ---------- Cảnh 2: tuyến đường ---------- */
 const STOPS = [
-  { x: 150, at: 138, time: "08:12", name: "Tachikawa", kanji: "立川" },
-  { x: 480, at: 180, time: "08:44", name: "Ome", kanji: "青梅" },
-  { x: 760, at: 210, time: "09:16", name: "Okutama", kanji: "奥多摩" },
-  { x: 990, at: 246, time: "09:50", name: "Hồ Okutama", kanji: "奥多摩湖" },
+  { x: 150, at: 138, time: "07:34", name: "Nhà mình", kanji: "獨協大学前" },
+  { x: 430, at: 176, time: "08:41", name: "Nishi-Kokubunji", kanji: "西国分寺" },
+  { x: 710, at: 212, time: "09:38", name: "Ōme", kanji: "青梅" },
+  { x: 990, at: 246, time: "10:19", name: "Okutama", kanji: "奥多摩" },
 ];
 const Route = ({ frame }) => {
   if (frame < 118 || frame > 282) return null;
   const inn = spring({ frame: frame - 120, fps: FPS, config: { damping: 15, stiffness: 120 } });
   const out = interpolate(frame, [268, 280], [1, 0], clamp);
-  const head = interpolate(frame, [138, 180, 188, 210], [150, 480, 480, 760], { ...clamp, easing: Easing.inOut(Easing.quad) });
-  const bus = interpolate(frame, [220, 246], [760, 990], { ...clamp, easing: Easing.inOut(Easing.quad) });
+  const head = interpolate(frame, [138, 176, 182, 212, 218, 246], [150, 430, 430, 710, 710, 990], { ...clamp, easing: Easing.inOut(Easing.quad) });
   return (
     <div
       style={{
@@ -325,23 +324,20 @@ const Route = ({ frame }) => {
       }}
     >
       <div style={{ position: "absolute", left: 40, top: 22, fontFamily: DISPLAY, fontSize: 34, color: C.ink }}>
-        Holiday Rapid Okutama số 3
+        Từ nhà tới Okutama
       </div>
       <div style={{ position: "absolute", right: 40, top: 30, fontFamily: BODY, fontWeight: 700, fontSize: 24, color: C.lake }}>
-        Sân ga 5, ga Tachikawa
+        3 lần đổi tàu, IC 1.752 yên
       </div>
       <svg width={1140} height={330} style={{ position: "absolute", inset: 0 }}>
         <line x1={150} y1={190} x2={990} y2={190} stroke="#D5DDD6" strokeWidth={14} strokeLinecap="round" />
         <line x1={150} y1={190} x2={head} y2={190} stroke={C.rail} strokeWidth={14} strokeLinecap="round" />
-        {frame >= 220 && (
-          <line x1={760} y1={190} x2={bus} y2={190} stroke={C.lake} strokeWidth={14} strokeDasharray="4 22" strokeLinecap="round" />
-        )}
         {STOPS.map((s) => {
           const p = spring({ frame: frame - s.at, fps: FPS, config: { damping: 9, stiffness: 200, mass: 0.6 } });
           return <circle key={s.name} cx={s.x} cy={190} r={17 * p} fill={C.paper} stroke={C.ink} strokeWidth={6} />;
         })}
         {/* đoàn tàu */}
-        <g transform={`translate(${head - 60} ${150 + Math.sin(frame * 0.9) * (head < 760 ? 1.2 : 0)})`} opacity={frame >= 134 ? 1 : 0}>
+        <g transform={`translate(${head - 60} ${150 + Math.sin(frame * 0.9) * (head < 990 ? 1.2 : 0)})`} opacity={frame >= 134 ? 1 : 0}>
           <rect x={0} y={0} width={104} height={34} rx={8} fill="#E9EEEA" stroke={C.ink} strokeWidth={4} />
           <rect x={2} y={20} width={100} height={8} fill={C.rail} />
           {[10, 34, 58, 82].map((wx) => (
@@ -405,7 +401,7 @@ const Ending = ({ frame }) => {
       <AbsoluteFill style={{ opacity: listOut }}>
         <Line frame={frame} at={458} top={110}>16:31 mặt trời lặn</Line>
         <Line frame={frame} at={480} top={196}>Ngâm onsen Moegi no Yu</Line>
-        <Line frame={frame} at={502} top={282}>16:58 tàu về, 17:54 tới Tachikawa</Line>
+        <Line frame={frame} at={502} top={282}>16:58 tàu về, 19:03 tới nhà</Line>
       </AbsoluteFill>
       {frame >= 546 && (
         <div
@@ -419,10 +415,10 @@ const Ending = ({ frame }) => {
           }}
         >
           <div style={{ fontFamily: DISPLAY, fontSize: 150, lineHeight: 1.1, color: C.paper, textShadow: `9px 9px 0 ${C.ink}` }}>
-            Hẹn 08:00
+            Hẹn 10:30
           </div>
           <div style={{ fontFamily: DISPLAY, fontSize: 52, color: C.icho, textShadow: `5px 5px 0 ${C.ink}`, marginTop: 6 }}>
-            Ga Tachikawa, sân ga 5
+            Trước cửa ga Okutama
           </div>
         </div>
       )}
@@ -502,7 +498,7 @@ export const Trailer = () => {
       <Title frame={frame} />
       <Route frame={frame} />
       <Sign frame={frame} start={284} end={338} x={90} y={96} tilt={-2} title="Hồ Okutama" kanji="奥多摩湖" sub="Đập Ogouchi, mặt hồ màu ngọc" />
-      <Sign frame={frame} start={330} end={384} x={640} y={150} tilt={2} title="Mukashi Michi" kanji="むかし道" sub="9,4 km đường xưa, xuôi dốc" />
+      <Sign frame={frame} start={330} end={384} x={640} y={150} tilt={2} title="Mukashi Michi" kanji="むかし道" sub="10 km đường xưa, xuôi dốc" />
       <Sign frame={frame} start={384} end={448} x={110} y={84} tilt={-1.5} title="Cầu treo Shidakura" kanji="しだくら橋" sub="Đứng giữa khe núi sông Tama" />
       <Ending frame={frame} />
 
